@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "33087e47-9f8f-4a9b-b2a8-118bc44b6a95",
+		"name": "pws",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET HospitalDay",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/hospitalDay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"hospitalDay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST HospitalDay",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"jour\": \"2020-03-19\",\n    \"nomReg\": \"Auvergne-Rh�ne-Alpes\",\n    \"numReg\": 84,\n    \"incid_rea\": 44\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2023/hospitalDay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"hospitalDay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceDay",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidenceDay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidenceDay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST incidenceDay",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dep\": \"01\",\n    \"jour\": \"2020-05-13\",\n    \"P\": 0,\n    \"cl_age90\": \"09\",\n    \"pop\": 83001\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2023/incidenceDay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidenceDay"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
