@@ -33,24 +33,24 @@ exports.router.delete('/rails', function (req, res) {
     console.log("DELETE /network/rails");
     index_1.networkController.deleteRails(req, res);
 });
-exports.router.get('/users', function (req, res) {
-    console.log("GET /network/users");
+exports.router.get('/hospitalDay', function (req, res) {
+    console.log("GET /network/hospitalDay");
     index_1.networkController.getStations(req, res);
 });
-exports.router.patch('/users/:id', function (req, res) {
-    console.log("PATCH /network/users/:id");
+exports.router.patch('/hospitalDay/:id', function (req, res) {
+    console.log("PATCH /network/hospitalDay/:id");
     index_1.networkController.patchStation(req, res);
 });
-exports.router.post('/users', function (req, res) {
-    console.log("POST /network/users");
+exports.router.post('/hospitalDay', function (req, res) {
+    console.log("POST /network/hospitalDay");
     index_1.networkController.postStation(req, res);
 });
-exports.router.delete('/users/:id', function (req, res) {
-    console.log("DELETE /network/users/:id");
+exports.router.delete('/hospitalDay/:id', function (req, res) {
+    console.log("DELETE /network/hospitalDay/:id");
     index_1.networkController.deleteStationById(req, res);
 });
-exports.router.delete('/users', function (req, res) {
-    console.log("DELETE /network/users");
+exports.router.delete('/hospitalDay', function (req, res) {
+    console.log("DELETE /network/hospitalDay");
     index_1.networkController.deleteStations(req, res);
 });
 exports.router.post('/path', function (req, res) {

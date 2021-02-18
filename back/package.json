@@ -1,7 +1,7 @@
 {
-  "name": "network-service",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "service for the Blue-Origin-X project",
+  "description": "service for the pws project",
   "main": "src/index.ts",
   "scripts": {
     "start:dev": "nodemon dist/index.js",

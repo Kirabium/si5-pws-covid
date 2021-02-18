@@ -1,6 +1,8 @@
-import { stationController } from './users';
+import { hospitalDayController } from './hospitalDay';
+import { incidenceDayController } from './IncidentDay';
 import { mockDBController } from './mockDB';
 export {
-    stationController,
+    hospitalDayController,
+    incidenceDayController,
     mockDBController
 };
