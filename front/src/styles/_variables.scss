@@ -38,11 +38,20 @@ $gray-900: #29323a !default;
 $black: #000 !default;
 $gray-light: $gray-100 !default;
 
-$bg-custom-dark: #040620;
+$bg-custom-dark: #040610;
 $main-gradient: radial-gradient(
   farthest-side ellipse at 10% 0,
   #333867 20%,
   #17193b
+);
+
+$bg-custom-plague: #200604;
+$plague-gradient: radial-gradient(
+  ellipse at 10% 0,
+  #2E0406 10%,
+  #931C20 40%,
+  #2E0406 70%,
+  #931C20,
 );
 
 $lime: #8cbf26 !default;
