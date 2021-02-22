@@ -15,6 +15,7 @@ import Register from '../pages/register';
 import { logoutUser } from '../actions/user';
 import CovidCounter from './CovidCounter/CovidCounter';
 import LocationContext from '../contexts/LocationContext'
+import axios from 'axios'
 
 const PrivateRoute = ({dispatch, component, ...rest }) => {
     if (!Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
@@ -36,7 +37,18 @@ function App(props) {
 
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-            setLatLng({lat: position.coords.latitude, lng: position.coords.longitude});
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            setLatLng({lat: lat, lng: lng});
+            axios.get(`https://api-adresse.data.gouv.fr/reverse/?lon=${lng}&lat=${lat}`).then(data => {
+                const info = data.data.features;
+                if(info.length > 0) {
+                    //console.log('INFO  = ', info[0])
+                    setLocation(`${info[0].properties.postcode}`)
+                } else {
+                   setLocation('Unkwonw')
+                }
+            })
         });
     }
   
