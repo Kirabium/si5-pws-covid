@@ -1,7 +1,9 @@
 
 import './CovidCounter.scss';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+
+import LocationContext from '../../contexts/LocationContext'
 
 import axios from 'axios';
 
