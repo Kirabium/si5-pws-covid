@@ -7,29 +7,33 @@ import axios from 'axios';
 
 function CovidCounter() {
 
-    const [counter, setCounter] = useState(0);
+    const [deathCounter, setDeathCounter] = useState(0);
+    const [hospitalCounter, setHospitalsCounter] = useState(0);
     let interval;
     const refreshTime = 3600000; // Represent an hour in milliseconds
     const URL = 'https://coronavirusapi-france.now.sh/FranceLiveGlobalData'
 
-    const getConfirmedCase = () => {
+    const getCaseData = () => {
         return new Promise((resolve, reject) => {
             axios.get(URL).then((data) => {
-                //console.log('FROM SERVER', data.data.FranceGlobalLiveData[0].casConfirmes);
-                resolve(data.data.FranceGlobalLiveData[0].casConfirmes)
+                //console.log('FROM SERVER', data.data.FranceGlobalLiveData);
+                resolve({
+                    death: data.data.FranceGlobalLiveData[0].deces,
+                    hospital: data.data.FranceGlobalLiveData[0].hospitalises
+                })
             })
         })
     }
 
     const updateCounter = () => {
-        getConfirmedCase().then((data) => {
-            setCounter(data)
-            console.log('ACTUAL COUNTER', counter)
+        getCaseData().then((data) => {
+            setDeathCounter(data.death)
+            setHospitalsCounter(data.hospital)
         })
     }
 
     useEffect(() => {
-        console.log('INIT COUNTER');
+        //console.log('INIT COUNTER');
         //console.log('SEARCHING FOR A NEW VALUE')
         updateCounter();
 
@@ -46,7 +50,8 @@ function CovidCounter() {
 
     return (
         <div className="covid-counter">
-            Cas Confirmés : <span id="counter">{counter !==0 ? counter : 'Chargement...'}</span>
+            <p className="count">Nombre de décès : <span id="deathCounter">{deathCounter !==0 ? deathCounter : 'Chargement...'}</span></p>
+            <p className="count">Nombre de personnes hospitalisé : <span id="hospitalCounter">{hospitalCounter !==0 ? hospitalCounter : 'Chargement...'}</span></p>
         </div>
     );
 }
