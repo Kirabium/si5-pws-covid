@@ -13,6 +13,7 @@ import LayoutComponent from '../components/Layout';
 import Login from '../pages/login';
 import Register from '../pages/register';
 import { logoutUser } from '../actions/user';
+import CovidCounter from './CovidCounter/CovidCounter';
 
 const PrivateRoute = ({dispatch, component, ...rest }) => {
     if (!Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
@@ -36,6 +37,7 @@ class App extends React.PureComponent {
                 hideProgressBar
                 closeButton={<CloseButton/>}
             />
+            <CovidCounter></CovidCounter>
             <HashRouter>
                 <Switch>
                     <Route path="/" exact render={() => <Redirect to="/app/main"/>}/>
