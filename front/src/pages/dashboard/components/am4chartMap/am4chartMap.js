@@ -27,7 +27,6 @@ import s from './am4chartMap.module.scss';
         pin: "https://i.ibb.co/J7MjDzR/plaguepin.png",
       }
     }
-    mode = "dark"
   
   componentDidMount() {
     let map = am4core.create("map", am4maps.MapChart);
@@ -44,14 +43,14 @@ import s from './am4chartMap.module.scss';
     map.zoomControl.valign = 'bottom';
     map.zoomControl.dy = -10;
     map.zoomControl.contentHeight = 20;
-    map.zoomControl.minusButton.background.fill = am4core.color(this.colors[this.mode].lightFill);
-    map.zoomControl.minusButton.background.stroke = am4core.color(this.colors[this.mode].stroke);
+    map.zoomControl.minusButton.background.fill = am4core.color(this.colors[this.props.mode].lightFill);
+    map.zoomControl.minusButton.background.stroke = am4core.color(this.colors[this.props.mode].stroke);
     map.zoomControl.minusButton.label.fontWeight = 600;
     map.zoomControl.minusButton.label.fontSize = 22;
     map.zoomControl.minusButton.scale = .75;
     map.zoomControl.minusButton.label.scale = .75;
-    map.zoomControl.plusButton.background.fill = am4core.color(this.colors[this.mode].lightFill);
-    map.zoomControl.plusButton.background.stroke = am4core.color(this.colors[this.mode].stroke);
+    map.zoomControl.plusButton.background.fill = am4core.color(this.colors[this.props.mode].lightFill);
+    map.zoomControl.plusButton.background.stroke = am4core.color(this.colors[this.props.mode].stroke);
     map.zoomControl.plusButton.label.fontWeight = 600;
     map.zoomControl.plusButton.label.fontSize = 22;
     map.zoomControl.plusButton.label.align = "center";
@@ -59,15 +58,15 @@ import s from './am4chartMap.module.scss';
     map.zoomControl.plusButton.label.scale = .75;
     map.zoomControl.plusButton.dx = 5;
     let plusButtonHoverState = map.zoomControl.plusButton.background.states.create("hover");
-    plusButtonHoverState.properties.fill = am4core.color(this.colors[this.mode].darkFill);
+    plusButtonHoverState.properties.fill = am4core.color(this.colors[this.props.mode].darkFill);
     let minusButtonHoverState = map.zoomControl.minusButton.background.states.create("hover");
-    minusButtonHoverState.properties.fill = am4core.color(this.colors[this.mode].darkFill);
+    minusButtonHoverState.properties.fill = am4core.color(this.colors[this.props.mode].darkFill);
     let polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name}";
-    polygonTemplate.fill = am4core.color(this.colors[this.mode].darkFill);
-    polygonTemplate.stroke = am4core.color(this.colors[this.mode].stroke)
+    polygonTemplate.fill = am4core.color(this.colors[this.props.mode].darkFill);
+    polygonTemplate.stroke = am4core.color(this.colors[this.props.mode].stroke)
     let hs = polygonTemplate.states.create("hover");
-    hs.properties.fill = am4core.color(this.colors[this.mode].darkerFill);
+    hs.properties.fill = am4core.color(this.colors[this.props.mode].darkerFill);
     let citySeries = map.series.push(new am4maps.MapImageSeries());
     citySeries.data = cities;
     citySeries.dataFields.value = "size";
@@ -77,10 +76,10 @@ import s from './am4chartMap.module.scss';
     city.propertyFields.longitude = "longitude";
     let circle = city.createChild(am4core.Image);
     //https://i.ibb.co/J7MjDzR/plaguepin.png
-    circle.href = this.colors[this.mode].pin;
+    circle.href = this.colors[this.props.mode].pin;
     circle.horizontalCenter = "middle";
     circle.verticalCenter = "bottom";
-    circle.fill = am4core.color(this.colors[this.mode].darkFill);
+    circle.fill = am4core.color(this.colors[this.props.mode].darkFill);
     let circleHoverState = circle.states.create("hover");
     circleHoverState.properties.strokeWidth = 1;
     circle.tooltipText = '{tooltip}';

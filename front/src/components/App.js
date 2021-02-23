@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
 import { HashRouter } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { ToastContainer } from 'react-toastify';
 import ErrorPage from '../pages/error';
 /* eslint-enable */
 
+import useLocalStorage from '../actions/useLocalStorage';
+
 import '../styles/theme.scss';
 import LayoutComponent from '../components/Layout';
 import Login from '../pages/login';
@@ -16,6 +18,8 @@ import { logoutUser } from '../actions/user';
 import CovidCounter from './CovidCounter/CovidCounter';
 import LocationContext from '../contexts/LocationContext'
 import axios from 'axios'
+
+
 
 const PrivateRoute = ({dispatch, component, ...rest }) => {
     if (!Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
@@ -32,8 +36,22 @@ const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-c
 
 
 function App(props) {
+
+
     const [LatLng, setLatLng] = useState({lat: 0, lng: 0});
     const [location, setLocation] = useState('UNKNOWN')
+    const [storageMode, setStorageMode] = useLocalStorage('theme','plague');
+
+    const handleChangeMode = useCallback(
+        (e) => {
+            //setDarkMode(modeValue);
+            setStorageMode(e);
+            document.documentElement.style.setProperty('--current-gradient', `var(--${e}-gradient)`)
+            document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${e})`)
+        },
+        [setStorageMode],
+    );
+
 
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -51,7 +69,17 @@ function App(props) {
             })
         });
     }
-  
+
+    useEffect(()=>{
+        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+            setStorageMode('dark')
+            document.documentElement.style.setProperty('--current-gradient', `var(--dark-gradient)`)
+            document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-dark)`)
+        }
+    },[])
+
+
+    
     return (
         <LocationContext.Provider value={ {LatLng, location, setLatLng, setLocation} } >
             <div>
@@ -65,7 +93,7 @@ function App(props) {
                     <Switch>
                         <Route path="/" exact render={() => <Redirect to="/app/main"/>}/>
                         <Route path="/app" exact render={() => <Redirect to="/app/main"/>}/>
-                        <PrivateRoute path="/app" dispatch={props.dispatch} component={LayoutComponent}/>
+                        <PrivateRoute path="/app" dispatch={props.dispatch} component={()=><LayoutComponent mode={storageMode} onchange={handleChangeMode}/>}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/login" exact component={Login}/>
                         <Route path="/error" exact component={ErrorPage}/>

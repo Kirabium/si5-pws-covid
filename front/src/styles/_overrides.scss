@@ -97,11 +97,11 @@
   font-family: $font-family-base;
   box-shadow: none;
   transition: border-color ease-in-out 0.15s, background-color ease-in-out 0.15s;
-  background: $bg-custom-dark;
+  background: var(--bg-current);
   border: none;
   &:focus {
     box-shadow: none;
-    background: $bg-custom-dark;
+    background: var(--bg-current);
   }
 
   &.no-border {
@@ -944,10 +944,10 @@ pre code {
     color: $content-color;
   }
   .modal-header {
-    border-bottom: 1px solid $bg-custom-dark;
+    border-bottom: 1px solid var(--bg-current);
   }
   .modal-footer {
-    border-top: 1px solid $bg-custom-dark;
+    border-top: 1px solid var(--bg-current);
   }
 }
 

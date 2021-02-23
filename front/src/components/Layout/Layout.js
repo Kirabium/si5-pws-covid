@@ -24,6 +24,7 @@ class Layout extends React.Component {
     sidebarStatic: PropTypes.bool,
     sidebarOpened: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
+    mode: PropTypes.string,
   };
 
   static defaultProps = {
@@ -63,7 +64,7 @@ class Layout extends React.Component {
         ].join(' ')}
       >
         <div className={s.wrap}>
-          <Header />
+          <Header onchange={this.props.onchange}/>
           {/* <Chat chatOpen={this.state.chatOpen} /> */}
           {/* <Helper /> */}
           <Sidebar />
@@ -78,7 +79,7 @@ class Layout extends React.Component {
                 >
                   <Switch>
                     <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
-                    <Route path="/app/main/dashboard" exact component={Dashboard} />
+                    <Route path="/app/main/dashboard" exact component={()=><Dashboard mode={this.props.mode} />} />
                     <Route path="/app/icons" exact component={UIIcons} />
                     <Route path="/app/notifications" exact component={UINotifications} />
                     <Route path="/app/charts" exact component={Charts} />
