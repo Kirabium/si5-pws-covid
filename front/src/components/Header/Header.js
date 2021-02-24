@@ -317,7 +317,7 @@ class Header extends React.Component {
               </ButtonGroup>
               <h6>Theme</h6>
               <ButtonGroup>
-                <Button color="info" onClick={()=> this.props.onchange('dark')}>
+                <Button color="info" onClick={()=> this.props.onchange('light')}>
                   Light
                 </Button>
                 <Button color="primary" onClick={()=> this.props.onchange('dark')}>

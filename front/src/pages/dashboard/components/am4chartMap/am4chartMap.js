@@ -12,6 +12,13 @@ import s from './am4chartMap.module.scss';
   class Am4chartMap extends Component {
 
     colors = {
+      light: {
+        lightFill: "#C7D0FF",
+        darkFill:"#0dc2ff",
+        darkerFill:"#00aae3",
+        stroke: "#1a0057",
+        pin: "https://i.ibb.co/10ntngd/darkpin.png"
+      },
       dark: {
         lightFill: "#C7D0FF",
         darkFill:"#474D84",

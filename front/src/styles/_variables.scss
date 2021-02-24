@@ -39,6 +39,13 @@ $black: #000 !default;
 $gray-light: $gray-100 !default;
 
 :root {
+  --bg-custom-light: #E4E6F0;
+  --light-gradient: radial-gradient(
+    farthest-side ellipse at 100% 0,
+    #ffeb58 5%,
+    #66e9fa 20%
+  );
+
   --bg-custom-dark: #040610;
   --dark-gradient: radial-gradient(
     farthest-side ellipse at 10% 0,
