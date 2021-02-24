@@ -64,7 +64,7 @@ class Layout extends React.Component {
         ].join(' ')}
       >
         <div className={s.wrap}>
-          <Header onchange={this.props.onchange}/>
+          <Header onchange={this.props.onchange} mode={this.props.mode}/>
           {/* <Chat chatOpen={this.state.chatOpen} /> */}
           {/* <Helper /> */}
           <Sidebar />

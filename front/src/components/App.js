@@ -71,10 +71,11 @@ function App(props) {
     }
 
     useEffect(()=>{
+
         document.documentElement.style.setProperty('--current-gradient', `var(--${storageMode}-gradient)`)
         document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${storageMode})`)
         if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-            setStorageMode('dark')
+            handleChangeMode('dark')
         }
     },[])
 
