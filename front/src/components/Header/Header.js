@@ -315,6 +315,18 @@ class Header extends React.Component {
                   Hide
                 </Button>
               </ButtonGroup>
+              <h6>Theme</h6>
+              <ButtonGroup>
+                <Button color="info" onClick={()=> this.props.onchange('light')}>
+                  Light
+                </Button>
+                <Button color="primary" onClick={()=> this.props.onchange('dark')}>
+                  Dark
+                </Button>
+                <Button color="danger" onClick={()=> this.props.onchange('plague')}>
+                  Plague
+                </Button>
+              </ButtonGroup>
             </DropdownMenu>
           </Dropdown>
           <Dropdown
