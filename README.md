@@ -6,11 +6,13 @@ Before any of these instructions, clone the repository.
 
 Install [docker](https://docs.docker.com/get-docker/)
 
-To run the server you should open a terminal in the root folder then run :
-- docker-compose build
-- docker-compose up
+To run the server you should open a terminal in the root folder then run:
+```bash
+docker-compose build
+docker-compose up
+```
 
-And the server + mongo should be running on localhost
+The server and mongo database should be running on localhost
 
 ## Running the web app
 
