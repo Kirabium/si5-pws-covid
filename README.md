@@ -1,12 +1,12 @@
 # si5-pws-covid
 
-Before any of these instructions, clone the repository.
+Before any of these instructions, clone the repository. It is preferable to follow the order of the instructions as having the web app running without the server can cause some request errors on the front side.
 
 ## Node server
 
-Install [docker](https://docs.docker.com/get-docker/)
+It is needed to have [docker](https://docs.docker.com/get-docker/) installed.
 
-To run the server you should open a terminal in the root folder then run:
+Then run the server by open a terminal in the root folder and running:
 ```bash
 docker-compose build
 docker-compose up
