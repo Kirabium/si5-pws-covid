@@ -1,9 +1,7 @@
 
 import './CovidCounter.scss';
 
-import React, { useEffect, useState, useContext } from 'react';
-
-import LocationContext from '../../contexts/LocationContext'
+import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 
@@ -16,9 +14,8 @@ function CovidCounter() {
     const URL = 'https://coronavirusapi-france.now.sh/FranceLiveGlobalData'
 
     const getCaseData = () => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             axios.get(URL).then((data) => {
-                //console.log('FROM SERVER', data.data.FranceGlobalLiveData);
                 resolve({
                     death: data.data.FranceGlobalLiveData[0].deces,
                     hospital: data.data.FranceGlobalLiveData[0].hospitalises
@@ -35,20 +32,14 @@ function CovidCounter() {
     }
 
     useEffect(() => {
-        //console.log('INIT COUNTER');
-        //console.log('SEARCHING FOR A NEW VALUE')
         updateCounter();
 
         interval = setInterval(() => {
-            //console.log('REFRESHING THE COUNTER...')
             updateCounter();
         }, refreshTime) // Refresh counter
 
-        return () => {
-            //console.log('CLEANING UP THE INTERVAL')
-            clearInterval(interval);
-        } // Clean the interval before the component is re-render
-    })
+        return () => { clearInterval(interval); } // Clean the interval before the component is re-render
+    }, [deathCounter, hospitalCounter])
 
     return (
         <div className="covid-counter">
