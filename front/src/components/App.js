@@ -38,7 +38,7 @@ const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-c
 function App(props) {
 
 
-    const [LatLng, setLatLng] = useState({lat: 0, lng: 0});
+    const [LatLng, setLatLng] = useState({lat: null, lng: null});
     const [location, setLocation] = useState('UNKNOWN')
     const [storageMode, setStorageMode] = useLocalStorage('theme','plague');
 
@@ -52,33 +52,40 @@ function App(props) {
         [setStorageMode],
     );
 
-
-    if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
-            setLatLng({lat: lat, lng: lng});
-            axios.get(`https://api-adresse.data.gouv.fr/reverse/?lon=${lng}&lat=${lat}`).then(data => {
-                const info = data.data.features;
-                if(info.length > 0) {
-                    //console.log('INFO  = ', info[0])
-                    setLocation(`${info[0].properties.postcode}`)
-                } else {
-                   setLocation('Unkwonw')
-                }
+    const findUserLocation = () => {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                setLatLng({lat: lat, lng: lng});
+                axios.get(`https://api-adresse.data.gouv.fr/reverse/?lon=${lng}&lat=${lat}`).then(data => {
+                    const info = data.data.features;
+                    if(info.length > 0) {
+                        setLocation(`${info[0].properties.postcode}`)
+                    } else {
+                       setLocation('Unkwonw')
+                    }
+                })
+            });
+        } else {
+            axios.get('http://ip-api.com/json').then(data => {
+                setLatLng({lat: data.data.lat, lng: data.data.lon})
+                setLocation(data.data.zip)
             })
-        });
+        }
     }
 
     useEffect(()=>{
-
         document.documentElement.style.setProperty('--current-gradient', `var(--${storageMode}-gradient)`)
         document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${storageMode})`)
         if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-            handleChangeMode('dark')
+            setStorageMode('dark')
         }
     },[])
 
+    useEffect(() => {
+        findUserLocation()
+    }, [])
 
     
     return (
