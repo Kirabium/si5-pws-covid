@@ -6,6 +6,7 @@ import {
   Navbar,
   Nav,
   NavItem,
+  NavLink,
   Dropdown,
   DropdownToggle,
   DropdownMenu,
@@ -67,8 +68,17 @@ class Header extends React.Component {
     return (
       <Navbar className={`d-print-none main-navbar ${s.root}`}>
         <Nav className="ml-md-0 d-flex nav-responsive">
+        <NavItem className="d-md-none">
+            <NavLink
+              onClick={this.toggleSidebar}
+              className={`${s.navItem} text-white`}
+              href="#"
+            >
+              <i className="fa fa-bars" />
+            </NavLink>
+          </NavItem>
 
-          <NavItem className={`d-none d-sm-block`}><CovidCounter /></NavItem>
+          <NavItem ><CovidCounter /></NavItem>
           <NavItem className={`${s.divider} d-none d-sm-block`} />
           <Dropdown
             className="d-none d-sm-block"
