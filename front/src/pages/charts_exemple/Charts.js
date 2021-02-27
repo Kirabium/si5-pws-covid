@@ -2,12 +2,12 @@ import React from "react";
 
 import { Row, Col } from "reactstrap";
 
-import Widget from "../../../components/Widget";
+import Widget from "../../components/Widget";
 import ApexChart from "react-apexcharts";
 
 import s from "./Charts.module.scss";
 import { chartData, liveChart, liveChartInterval } from "./mock";
-import Sparklines from "../../../components/Sparklines";
+import Sparklines from "../../components/Sparklines";
 
 import ReactEchartsCore from "echarts-for-react/lib/core";
 
