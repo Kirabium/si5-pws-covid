@@ -12,7 +12,7 @@ This dashboard is a lite version (containing only few components) of our [Light 
 
 ## Features
 
-Light Blue React Template is a great template to quick-start development of SAAS, CMS, IoT Dashboard, E-Commerce apps, etc  
+Light Blue React Template is a great template to quick-start development of SAAS, CMS, IoT IncidenceList, E-Commerce apps, etc  
 Lite version of a Light Blue includes following features and pages:
 
 * Bootstrap 4+ & SCSS
@@ -26,7 +26,7 @@ Lite version of a Light Blue includes following features and pages:
 ## Pages
 We have implemented some basic pages, so you can see our template in action.
 
-* Dashboard sample
+* IncidenceList sample
 * Typography
 * Tables
 * Notifications
@@ -75,9 +75,9 @@ For any additional information please refer to [Flatlogic homepage](https://flat
 ## More from Flatlogic
 - [Awesome Bootstrap Checkboxes & Radios](https://github.com/flatlogic/awesome-bootstrap-checkbox) - ✅ Pure css way to make inputs look prettier
 - [React Native Starter](https://github.com/flatlogic/react-native-starter) - 🚀 A powerful react native starter template that bootstraps development of your mobile application
-- [React Dashboard](https://github.com/flatlogic/react-dashboard) - 🔥 React Dashboard - isomorphic admin dashboard template with GraphQL
+- [React IncidenceList](https://github.com/flatlogic/react-dashboard) - 🔥 React IncidenceList - isomorphic admin dashboard template with GraphQL
 - [Sing App](https://github.com/flatlogic/sing-app) - 💥 Free and open-source admin dashboard template built with Bootstrap 4
-- [Light Blue Dashboard](https://github.com/flatlogic/light-blue-dashboard) - 💦 Free and open-source (no frameworks) admin dashboard template built with Bootstrap
+- [Light Blue IncidenceList](https://github.com/flatlogic/light-blue-dashboard) - 💦 Free and open-source (no frameworks) admin dashboard template built with Bootstrap
 
 ## Premium themes
 Looking for premium themes and templates? Check out our other template at [flatlogic.com](https://flatlogic.com/admin-dashboards).

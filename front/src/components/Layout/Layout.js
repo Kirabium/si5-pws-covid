@@ -18,6 +18,8 @@ import Sidebar from '../Sidebar';
 import BreadcrumbHistory from '../BreadcrumbHistory';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
 import s from './Layout.module.scss';
+import IncidenceList from "../../pages/incidence_list";
+import HospitalList from "../../pages/hospital_list";
 
 class Layout extends React.Component {
   static propTypes = {
@@ -80,6 +82,8 @@ class Layout extends React.Component {
                   <Switch>
                     <Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
                     <Route path="/app/main/dashboard" exact component={()=><Dashboard mode={this.props.mode} />} />
+                    <Route path="/app/main/hospital/list" exact component={()=><HospitalList mode={this.props.mode} />} />
+                    <Route path="/app/main/incidence/list" exact component={()=><IncidenceList mode={this.props.mode} />} />
                     <Route path="/app/icons" exact component={UIIcons} />
                     <Route path="/app/notifications" exact component={UINotifications} />
                     <Route path="/app/charts" exact component={Charts} />
