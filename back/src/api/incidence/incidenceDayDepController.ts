@@ -9,20 +9,17 @@ export class IncidenceDayDepController {
     }
 
     public async getIncidencesDayDepByPage(req: Request, res: Response) {
-        const resultat = await IncidenceDayDepModel.find();
-        const pageNum = req.params['page_num'];
-        const pack_size = 20;
-        const nbPage =  Math.ceil(resultat.length / pack_size)
-        const nextPage = (+pageNum !== nbPage)? `http://localhost:2023/incidence/dep/day/${+pageNum + 1}` : null;
-        const prevPage = (+pageNum !== 1)? `http://localhost:2023/incidence/dep/day/${+pageNum - 1}` : null;
-        let jsonRes = {
-            nbPage: nbPage,
+        const pageNum : string = req.params['page_num'];
+        const pack_size : number = 20;
+        const start : number = pack_size*(Number(pageNum)-1);
+        const resultat : IIncidenceDayDep[] = await IncidenceDayDepModel.find().skip(start).limit(pack_size);
+        const nextPage : string = `http://localhost:2023/incidence/dep/day/${+pageNum + 1}`;
+        const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/incidence/dep/day/${+pageNum - 1}` : null;
+        let jsonRes : any = {
             nextPage: nextPage,
             prevPage: prevPage,
             content: resultat
-        }
-        const delta = (+pageNum - 1) * pack_size;
-        jsonRes.content = jsonRes.content.slice(0 + delta, pack_size + delta);
+        };
         return res.status(200).json(jsonRes);
     }
 
