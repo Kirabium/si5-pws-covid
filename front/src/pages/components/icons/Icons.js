@@ -895,7 +895,7 @@ class Icons extends React.Component {
 
                 <Col className="icon-list-item" lg={3} md={4} xs={12}><a
                   href="../icon/caret-square-o-up"
-                ><i className="fa fa-caret-square-o-up" />
+                ><i className="fa fa-caret-square-o-Zdaup" />
                   caret-square-o-up</a></Col>
 
                 <Col className="icon-list-item" lg={3} md={4} xs={12}><a href="../icon/certificate"><i
