@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Switch, Route } from 'react-router';
+import { connect } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router';
 import { HashRouter } from 'react-router-dom';
 
 /* eslint-disable */
@@ -10,12 +11,16 @@ import useLocalStorage from '../actions/useLocalStorage';
 
 import '../styles/theme.scss';
 import LayoutComponent from '../components/Layout';
-import IncidenceList from "../pages/incidence_list/IncidenceList";
-import HospitalList from "../pages/hospital_list/HospitalList";
-import Charts from '../pages/charts_exemple/Charts';
 import LocationContext from '../contexts/LocationContext'
 import axios from 'axios'
 
+const PrivateRoute = ({component, ...rest }) => {
+
+    return ( // eslint-disable-line
+        <Route {...rest} render={props => (React.createElement(component, props))}/>
+    );
+    
+};
 
 function App(props) {
 
@@ -71,22 +76,21 @@ function App(props) {
 
     
     return (
-        <div>
-            <HashRouter>
-                <Switch>
-                    <Route path="/" exact component={()=><LayoutComponent mode={storageMode} onchange={handleChangeMode}/>}/>
-                    <Route path="/hospital/list" exact component={()=><HospitalList mode={storageMode} />}/>
-                    <Route path="/incidence/list" exact component={()=><IncidenceList mode={storageMode} />}/>
-                    <Route path="/charts" exact component={Charts} />
-                    <Route path="/error" exact component={ErrorPage}/>
-                    <Route component={ErrorPage}/>
-                    
-                </Switch>
-            </HashRouter>
-        </div>
+        <LocationContext.Provider value={ {LatLng, location, setLatLng, setLocation} } >
+            <div>
+                <HashRouter>
+                    <Switch>
+                        <Route path="/" exact render={() => <Redirect to="/app"/>}/>
+                        <PrivateRoute path="/app" component={()=><LayoutComponent mode={storageMode} onchange={handleChangeMode}/>}/>
+                        <Route path="/error" exact component={ErrorPage}/>
+                        <Route component={ErrorPage}/>
+                        <Redirect from="*" to="/app/dashboard"/>
+                    </Switch>
+                </HashRouter>
+            </div>
+        </LocationContext.Provider>
 
     );
 }
 
-
-export default App;
+export default connect()(App);

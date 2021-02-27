@@ -75,7 +75,7 @@ class Sidebar extends React.Component {
                         isHeader
                         header="Hospital cases list"
                         iconName="flaticon-list"
-                        link="/hospital/list"
+                        link="/app/hospital/list"
                         index="hospital"
                     />
                     <LinksGroup
@@ -84,7 +84,7 @@ class Sidebar extends React.Component {
                         header="Incidence days list"
                         isHeader
                         iconName="flaticon-list"
-                        link="/incidence/list"
+                        link="/app/incidence/list"
                         index="indicence"
                     />
                     <LinksGroup
@@ -93,7 +93,7 @@ class Sidebar extends React.Component {
                         header="Charts exemple"
                         isHeader
                         iconName="flaticon-layers"
-                        link="/charts"
+                        link="/app/charts"
                         index="charts"
                     />
                 </ul>
