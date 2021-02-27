@@ -61,7 +61,7 @@ function App(props) {
         document.documentElement.style.setProperty('--current-gradient', `var(--${storageMode}-gradient)`)
         document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${storageMode})`)
         if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-            setStorageMode('dark')
+            handleChangeMode('dark')
         }
     },[])
 
@@ -74,9 +74,9 @@ function App(props) {
         <div>
             <HashRouter>
                 <Switch>
-                    <Route path="/" exact component={LayoutComponent} />
-                    <Route path="/hospital/list" exact component={HospitalList}/>
-                    <Route path="/incidence/list" exact component={IncidenceList}/>
+                    <Route path="/" exact component={()=><LayoutComponent mode={storageMode} onchange={handleChangeMode}/>}/>
+                    <Route path="/hospital/list" exact component={()=><HospitalList mode={storageMode} />}/>
+                    <Route path="/incidence/list" exact component={()=><IncidenceList mode={storageMode} />}/>
                     <Route path="/charts" exact component={Charts} />
                     <Route path="/error" exact component={ErrorPage}/>
                     <Route component={ErrorPage}/>

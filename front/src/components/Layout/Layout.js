@@ -7,8 +7,7 @@ import Dashboard from '../../pages/dashboard';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import s from './Layout.module.scss';
-import IncidenceList from "../../pages/incidence_list";
-import HospitalList from "../../pages/hospital_list";
+
 
 class Layout extends React.Component {
   static propTypes = {
@@ -39,7 +38,7 @@ class Layout extends React.Component {
           <Header onchange={this.props.onchange} mode={this.props.mode}/>
           <Sidebar />
             <main className={s.content}>
-              <Dashboard mode={this.props.mode}/>
+            <Dashboard mode={this.props.mode}/>
               <footer className={s.contentFooter}>
                 Dashboard de visualisation des données du covid du groupe DFGH
               </footer>
