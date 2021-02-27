@@ -83,7 +83,7 @@ class Header extends React.Component {
               <h6>Sidebar on the</h6>
               <ButtonGroup size="sm">
                 <Button
-                  color="primary"
+                  color={this.props.mode == 'plague' ? "danger" :"primary"}
                   onClick={() => this.moveSidebar("left")}
                   className={
                     this.props.sidebarPosition === "left" ? "active" : ""
@@ -92,7 +92,7 @@ class Header extends React.Component {
                   Left
                 </Button>
                 <Button
-                  color="primary"
+                  color={this.props.mode == 'plague' ? "danger" :"primary"}
                   onClick={() => this.moveSidebar("right")}
                   className={
                     this.props.sidebarPosition === "right" ? "active" : ""
@@ -104,7 +104,7 @@ class Header extends React.Component {
               <h6 className="mt-2">Sidebar</h6>
               <ButtonGroup size="sm">
                 <Button
-                  color="primary"
+                  color={this.props.mode == 'plague' ? "danger" :"primary"}
                   onClick={() => this.toggleVisibilitySidebar("show")}
                   className={
                     this.props.sidebarVisibility === "show" ? "active" : ""
@@ -113,13 +113,25 @@ class Header extends React.Component {
                   Show
                 </Button>
                 <Button
-                  color="primary"
+                  color={this.props.mode == 'plague' ? "danger" :"primary"}
                   onClick={() => this.toggleVisibilitySidebar("hide")}
                   className={
                     this.props.sidebarVisibility === "hide" ? "active" : ""
                   }
                 >
                   Hide
+                </Button>
+              </ButtonGroup>
+              <h6>Theme</h6>
+              <ButtonGroup>
+                <Button color="info" onClick={()=> this.props.onchange('light')}>
+                  Light
+                </Button>
+                <Button color="primary" onClick={()=> this.props.onchange('dark')}>
+                  Dark
+                </Button>
+                <Button color="danger" onClick={()=> this.props.onchange('plague')}>
+                  Plague
                 </Button>
               </ButtonGroup>
             </DropdownMenu>

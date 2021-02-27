@@ -7,12 +7,15 @@ import Dashboard from '../../pages/dashboard';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import s from './Layout.module.scss';
+import IncidenceList from "../../pages/incidence_list";
+import HospitalList from "../../pages/hospital_list";
 
 class Layout extends React.Component {
   static propTypes = {
     sidebarStatic: PropTypes.bool,
     sidebarOpened: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
+    mode: PropTypes.string,
   };
 
   static defaultProps = {
@@ -33,10 +36,10 @@ class Layout extends React.Component {
         ].join(' ')}
       >
         <div className={s.wrap}>
-          <Header />
+          <Header onchange={this.props.onchange} mode={this.props.mode}/>
           <Sidebar />
             <main className={s.content}>
-              <Dashboard/>
+              <Dashboard mode={this.props.mode}/>
               <footer className={s.contentFooter}>
                 Dashboard de visualisation des données du covid du groupe DFGH
               </footer>

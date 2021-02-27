@@ -66,7 +66,7 @@ class Dashboard extends React.Component {
         <Row>
           <Col lg={7}>
             <Widget className="bg-transparent">
-              <Map />
+              <Map mode={this.props.mode} />
             </Widget>
           </Col>
           <Col lg={1} />

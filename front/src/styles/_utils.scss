@@ -654,12 +654,12 @@ $i: 0;
 }
 
 .btn-custom-dark {
-  background: $bg-custom-dark !important;
+  background: var(--bg-current) !important;
   color: $content-color;
 }
 
 .bg-custom-dark {
-  background: $bg-custom-dark !important;
+  background: var(--bg-current) !important;
 }
 
 .bg-subtle-blue {
