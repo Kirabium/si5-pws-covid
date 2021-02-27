@@ -8,6 +8,23 @@ export class IncidenceDayDepController {
         return res.status(200).json(await IncidenceDayDepModel.find());
     }
 
+    public async getIncidencesDayDepByPage(req: Request, res: Response) {
+        const resultat = await IncidenceDayDepModel.find();
+        const pageNum = req.params['page_num'];
+        const pack_size = 20;
+        let jsonRes = {
+            nbPage: Math.ceil(resultat.length / pack_size),
+            nextPage: `http://localhost:2023/incidence/dep/day/${+pageNum + 1}`,
+            prevPage: `http://localhost:2023/incidence/dep/day/${+pageNum - 1}`,
+            content: resultat
+        }
+        if(pageNum) {
+            const delta = (+pageNum - 1) * pack_size;
+            jsonRes.content = jsonRes.content.slice(0 + delta, pack_size + delta);
+        }
+        return res.status(200).json(jsonRes);
+    }
+
     public async postIncidenceDayDep(req: Request, res: Response) {
         let user: IIncidenceDayDep = req.body;
         let pattern;

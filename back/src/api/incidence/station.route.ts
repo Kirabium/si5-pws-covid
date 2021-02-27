@@ -16,6 +16,11 @@ station_router.get('/dep/day', (req: Request, res: Response) => {
     incidenceDayDepController.getIncidencesDayDep(req, res);
 });
 
+station_router.get('/dep/day/:page_num', (req: Request, res: Response) => {
+    console.log("GET /incidence/dep/day")
+    incidenceDayDepController.getIncidencesDayDepByPage(req, res);
+});
+
 station_router.patch('/dep/day/:id', (req: Request, res: Response) => {
     console.log("PATCH /incidence/dep/day/:id")
     incidenceDayDepController.patchIncidenceDayDep(req, res);
