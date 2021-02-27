@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router';
+import { Switch, Route } from 'react-router';
 import { HashRouter } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 
 /* eslint-disable */
 import ErrorPage from '../pages/error';
@@ -10,44 +8,19 @@ import ErrorPage from '../pages/error';
 
 import '../styles/theme.scss';
 import LayoutComponent from '../components/Layout';
-import Login from '../pages/login';
-import Register from '../pages/register';
-import { logoutUser } from '../actions/user';
-import CovidCounter from './CovidCounter/CovidCounter';
-
-const PrivateRoute = ({dispatch, component, ...rest }) => {
-    if (!Login.isAuthenticated(JSON.parse(localStorage.getItem('authenticated')))) {
-        dispatch(logoutUser());
-        return (<Redirect to="/login"/>)
-    } else {
-        return ( // eslint-disable-line
-            <Route {...rest} render={props => (React.createElement(component, props))}/>
-        );
-    }
-};
-
-const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-close notifications-close"/>
+import Charts from '../pages/charts_exemple/Charts';
 
 class App extends React.PureComponent {
   render() {
     return (
         <div>
-            <ToastContainer
-                autoClose={5000}
-                hideProgressBar
-                closeButton={<CloseButton/>}
-            />
-            <CovidCounter></CovidCounter>
             <HashRouter>
                 <Switch>
-                    <Route path="/" exact render={() => <Redirect to="/app/main"/>}/>
-                    <Route path="/app" exact render={() => <Redirect to="/app/main"/>}/>
-                    <PrivateRoute path="/app" dispatch={this.props.dispatch} component={LayoutComponent}/>
-                    <Route path="/register" exact component={Register}/>
-                    <Route path="/login" exact component={Login}/>
+                    <Route path="/" exact component={LayoutComponent} />
+                    <Route path="/charts" exact component={Charts} />
                     <Route path="/error" exact component={ErrorPage}/>
                     <Route component={ErrorPage}/>
-                    <Redirect from="*" to="/app/main/dashboard"/>
+                    
                 </Switch>
             </HashRouter>
         </div>
@@ -56,8 +29,5 @@ class App extends React.PureComponent {
   }
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
 
-export default connect(mapStateToProps)(App);
+export default App;
