@@ -1,6 +1,6 @@
 // @ts-ignore
 import mongoose, {Model, model, Schema, Document} from 'mongoose';
-import {IIncidenceDay} from "./network.interface";
+import {IIncidenceWeekDep} from "./network.interface";
 
 
 const MongooseSchemaJsonSchema = require("mongoose-schema-jsonschema");
@@ -8,13 +8,13 @@ MongooseSchemaJsonSchema(mongoose);
 
 
 
-export const IncidenceDaySchema = new Schema(
+export const IncidenceWeekDepSchema = new Schema(
     {
         dep: {
-            type: Number,
+            type: String,
             required: true
         },
-        jour: {
+        week: {
             type: String,
             required: true
         },
@@ -35,8 +35,8 @@ export const IncidenceDaySchema = new Schema(
 );
 
 
-export interface IIncidenceDayModel extends IIncidenceDay, mongoose.Document {
+export interface IIncidenceWeekDepModel extends IIncidenceWeekDep, mongoose.Document {
 }
 
 
-export const IncidenceDayModel: Model<IIncidenceDayModel> = model<IIncidenceDayModel>("IncidenceDay", IncidenceDaySchema);
+export const IncidenceWeekDepModel: Model<IIncidenceWeekDepModel> = model<IIncidenceWeekDepModel>("IncidenceWeekDep", IncidenceWeekDepSchema);

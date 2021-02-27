@@ -25,75 +25,146 @@
 			"response": []
 		},
 		{
-			"name": "POST HospitalDay",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"jour\": \"2020-03-19\",\n    \"nomReg\": \"Auvergne-Rh�ne-Alpes\",\n    \"numReg\": 84,\n    \"incid_rea\": 44\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:2023/hospitalDay",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "2023",
-					"path": [
-						"hospitalDay"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET IncidenceDay",
+			"name": "GET IncidenceDayReg",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:2023/incidenceDay",
+					"raw": "http://localhost:2023/incidence/reg/day",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "2023",
 					"path": [
-						"incidenceDay"
+						"incidence",
+						"reg",
+						"day"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "POST incidenceDay",
+			"name": "GET IncidenceDayFrance",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"dep\": \"01\",\n    \"jour\": \"2020-05-13\",\n    \"P\": 0,\n    \"cl_age90\": \"09\",\n    \"pop\": 83001\n  }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:2023/incidenceDay",
+					"raw": "http://localhost:2023/incidence/france/day",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "2023",
 					"path": [
-						"incidenceDay"
+						"incidence",
+						"france",
+						"day"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceDayDep",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/dep/day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"dep",
+						"day"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceWeekDep",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/dep/week",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"dep",
+						"week"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceWeekReg",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/reg/week",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"reg",
+						"week"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceWeekFrance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/france/week",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"france",
+						"week"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST init database",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/db/init",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"db",
+						"init"
 					]
 				}
 			},

@@ -1,49 +1,57 @@
 // @ts-ignore
 import mongoose, {Model, model, Schema, Document} from 'mongoose';
-import {IHospitalDay, IIncidenceDayDep} from "./network.interface";
+import {IIncidenceWeekReg} from "./network.interface";
 
 
 const MongooseSchemaJsonSchema = require("mongoose-schema-jsonschema");
 MongooseSchemaJsonSchema(mongoose);
 
 
-export const HospitalDaySchema = new Schema(
+export const IncidenceWeekRegSchema = new Schema(
     {
-
-        "dep": {
+        reg: {
             type: String,
             required: true
         },
-        "sexe": {
-            type: Number,
-            required: true
-        },
-        "jour": {
+        week: {
             type: String,
             required: true
         },
-        "hosp": {
+        P_f: {
             type: Number,
             required: true
         },
-        "rea": {
+        P_h: {
             type: Number,
             required: true
         },
-        "rad": {
+        P: {
             type: Number,
             required: true
         },
-        "dc": {
+        pop_f: {
+            type: Number,
+            required: true
+        },
+        pop_h: {
+            type: Number,
+            required: true
+        },
+        cl_age90: {
+            type: String,
+            required: true
+        },
+        pop: {
             type: Number,
             required: true
         }
+
     }
 );
 
 
-export interface IHospitalDayModel extends IHospitalDay, mongoose.Document {
+export interface IIncidenceWeekRegModel extends IIncidenceWeekReg, mongoose.Document {
 }
 
 
-export const HospitalDayModel: Model<IHospitalDayModel> = model<IHospitalDayModel>("HospitalDay", HospitalDaySchema);
+export const IncidenceWeekRegModel: Model<IIncidenceWeekRegModel> = model<IIncidenceWeekRegModel>("IncidenceWeekReg", IncidenceWeekRegSchema);

@@ -21,7 +21,7 @@ exports.station_router.post('/', function (req, res) {
     console.log("POST /hospitalDay");
     index_1.hospitalDayController.postHospitalDay(req, res);
 });
-exports.station_router.delete('/user/:id', function (req, res) {
+exports.station_router.delete('/:id', function (req, res) {
     console.log("DELETE /hospitalDay/:id");
     index_1.hospitalDayController.deleteHospitalDayById(req, res);
 });

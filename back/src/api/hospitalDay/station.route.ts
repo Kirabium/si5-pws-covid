@@ -21,7 +21,7 @@ station_router.post('/', (req: Request, res: Response) => {
     hospitalDayController.postHospitalDay(req, res);
 });
 
-station_router.delete('/user/:id', (req: Request, res: Response) => {
+station_router.delete('/:id', (req: Request, res: Response) => {
     console.log("DELETE /hospitalDay/:id")
     hospitalDayController.deleteHospitalDayById(req, res);
 });

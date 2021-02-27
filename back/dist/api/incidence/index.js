@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.incidenceWeekRegController = exports.incidenceWeekFranceController = exports.incidenceWeekDepController = exports.incidenceDayRegController = exports.incidenceDayFranceController = exports.incidenceDayDepController = void 0;
+var incidenceDayDepController_1 = require("./incidenceDayDepController");
+var incidenceDayFranceController_1 = require("./incidenceDayFranceController");
+var incidenceDayRegController_1 = require("./incidenceDayRegController");
+var incidenceWeekDepController_1 = require("./incidenceWeekDepController");
+var incidenceWeekFranceController_1 = require("./incidenceWeekFranceController");
+var incidenceWeekRegController_1 = require("./incidenceWeekRegController");
+exports.incidenceDayDepController = new incidenceDayDepController_1.IncidenceDayDepController();
+exports.incidenceDayFranceController = new incidenceDayFranceController_1.IncidenceDayFranceController();
+exports.incidenceDayRegController = new incidenceDayRegController_1.IncidenceDayRegController();
+exports.incidenceWeekDepController = new incidenceWeekDepController_1.IncidenceWeekDepController();
+exports.incidenceWeekFranceController = new incidenceWeekFranceController_1.IncidenceWeekFranceController();
+exports.incidenceWeekRegController = new incidenceWeekRegController_1.IncidenceWeekRegController();

@@ -1,8 +1,21 @@
-import { hospitalDayController } from './hospitalDay';
-import { incidenceDayController } from './IncidentDay';
-import { mockDBController } from './mockDB';
+import {hospitalDayController} from './hospitalDay';
+import {
+    incidenceDayDepController,
+    incidenceDayFranceController,
+    incidenceDayRegController,
+    incidenceWeekDepController,
+    incidenceWeekFranceController,
+    incidenceWeekRegController
+} from './incidence';
+import {mockDBController} from './mockDB';
+
 export {
     hospitalDayController,
-    incidenceDayController,
+    incidenceDayDepController,
+    incidenceWeekRegController,
+    incidenceWeekFranceController,
+    incidenceWeekDepController,
+    incidenceDayRegController,
+    incidenceDayFranceController,
     mockDBController
 };

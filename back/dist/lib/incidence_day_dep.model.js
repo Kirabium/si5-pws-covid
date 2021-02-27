@@ -19,39 +19,31 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HospitalDayModel = exports.HospitalDaySchema = void 0;
+exports.IncidenceDayDepModel = exports.IncidenceDayDepSchema = void 0;
 // @ts-ignore
 var mongoose_1 = __importStar(require("mongoose"));
 var MongooseSchemaJsonSchema = require("mongoose-schema-jsonschema");
 MongooseSchemaJsonSchema(mongoose_1.default);
-exports.HospitalDaySchema = new mongoose_1.Schema({
-    "dep": {
+exports.IncidenceDayDepSchema = new mongoose_1.Schema({
+    dep: {
         type: String,
         required: true
     },
-    "sexe": {
-        type: Number,
-        required: true
-    },
-    "jour": {
+    jour: {
         type: String,
         required: true
     },
-    "hosp": {
+    P: {
         type: Number,
         required: true
     },
-    "rea": {
+    cl_age90: {
         type: Number,
         required: true
     },
-    "rad": {
+    pop: {
         type: Number,
         required: true
     },
-    "dc": {
-        type: Number,
-        required: true
-    }
 });
-exports.HospitalDayModel = mongoose_1.model("HospitalDay", exports.HospitalDaySchema);
+exports.IncidenceDayDepModel = mongoose_1.model("IncidenceDayDep", exports.IncidenceDayDepSchema);

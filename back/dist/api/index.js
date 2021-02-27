@@ -1,9 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mockDBController = exports.incidenceDayController = exports.hospitalDayController = void 0;
+exports.mockDBController = exports.incidenceDayFranceController = exports.incidenceDayRegController = exports.incidenceWeekDepController = exports.incidenceWeekFranceController = exports.incidenceWeekRegController = exports.incidenceDayDepController = exports.hospitalDayController = void 0;
 var hospitalDay_1 = require("./hospitalDay");
 Object.defineProperty(exports, "hospitalDayController", { enumerable: true, get: function () { return hospitalDay_1.hospitalDayController; } });
-var IncidentDay_1 = require("./IncidentDay");
-Object.defineProperty(exports, "incidenceDayController", { enumerable: true, get: function () { return IncidentDay_1.incidenceDayController; } });
+var incidence_1 = require("./incidence");
+Object.defineProperty(exports, "incidenceDayDepController", { enumerable: true, get: function () { return incidence_1.incidenceDayDepController; } });
+Object.defineProperty(exports, "incidenceDayFranceController", { enumerable: true, get: function () { return incidence_1.incidenceDayFranceController; } });
+Object.defineProperty(exports, "incidenceDayRegController", { enumerable: true, get: function () { return incidence_1.incidenceDayRegController; } });
+Object.defineProperty(exports, "incidenceWeekDepController", { enumerable: true, get: function () { return incidence_1.incidenceWeekDepController; } });
+Object.defineProperty(exports, "incidenceWeekFranceController", { enumerable: true, get: function () { return incidence_1.incidenceWeekFranceController; } });
+Object.defineProperty(exports, "incidenceWeekRegController", { enumerable: true, get: function () { return incidence_1.incidenceWeekRegController; } });
 var mockDB_1 = require("./mockDB");
 Object.defineProperty(exports, "mockDBController", { enumerable: true, get: function () { return mockDB_1.mockDBController; } });
