@@ -13,6 +13,7 @@ docker-compose up
 ```
 
 The server and mongo database should be running on localhost
+note : the mongoDB image won't run on windows, you should execute docker in an Unix or Mac environment
 
 ## Running the web app
 
