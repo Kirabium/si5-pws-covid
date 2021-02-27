@@ -78,10 +78,28 @@ class Sidebar extends React.Component {
                     <LinksGroup
                         onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                         activeItem={this.props.activeItem}
-                        header="Dashboard"
+                        header="IncidenceList"
                         isHeader
                         iconName="flaticon-home"
                         link="/app/main"
+                        index="main"
+                    />
+                    <LinksGroup
+                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+                        activeItem={this.props.activeItem}
+                        isHeader
+                        header="Hospital cases list"
+                        iconName="flaticon-list"
+                        link="/app/main/hospital/list"
+                        index="main"
+                    />
+                    <LinksGroup
+                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+                        activeItem={this.props.activeItem}
+                        header="Incidence days list"
+                        isHeader
+                        iconName="flaticon-list"
+                        link="/app/main/incidence/list"
                         index="main"
                     />
                     <h5 className={[s.navTitle, s.groupTitle].join(' ')}>TEMPLATE</h5>

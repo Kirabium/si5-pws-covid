@@ -1,0 +1,6 @@
+{
+  "name": "hospitallist",
+  "version": "0.0.0",
+  "private": true,
+  "main": "HospitalList.js"
+}
