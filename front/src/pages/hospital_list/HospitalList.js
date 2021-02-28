@@ -31,6 +31,12 @@ class HospitalList extends React.Component {
         };
     }
 
+    nameSex(sex){
+        if(Number(sex)=== 0) return "all";
+        if(Number(sex) === 1) return "men";
+        if(Number(sex) === 2) return "women";
+    }
+
     displayElement = (row) => {
         return <tr key={row._id}>
             <td>
@@ -54,7 +60,7 @@ class HospitalList extends React.Component {
                 {row.dc}
             </td>
             <td>
-                {row.sexe}
+                {this.nameSex(row.sexe)}
             </td>
         </tr>
     };
