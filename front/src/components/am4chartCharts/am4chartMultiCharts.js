@@ -129,7 +129,7 @@ class am4chartMultiCharts extends Component {
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
     valueAxis.title.text = "Nombre de personne";
     valueAxis.title.fill = am4core.color("#fff");
-    valueAxis.label.fill = am4core.color("#fff");
+
 
     // Create series
     let mort = chart.series.push(new am4charts.ColumnSeries());
