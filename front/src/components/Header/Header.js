@@ -93,7 +93,7 @@ class Header extends React.Component {
               <h6>Sidebar on the</h6>
               <ButtonGroup size="sm">
                 <Button
-                  color={this.props.mode == 'plague' ? "danger" :"primary"}
+                  color={this.props.mode === 'plague' ? "danger" :"primary"}
                   onClick={() => this.moveSidebar("left")}
                   className={
                     this.props.sidebarPosition === "left" ? "active" : ""
@@ -102,7 +102,7 @@ class Header extends React.Component {
                   Left
                 </Button>
                 <Button
-                  color={this.props.mode == 'plague' ? "danger" :"primary"}
+                  color={this.props.mode === 'plague' ? "danger" :"primary"}
                   onClick={() => this.moveSidebar("right")}
                   className={
                     this.props.sidebarPosition === "right" ? "active" : ""
@@ -114,7 +114,7 @@ class Header extends React.Component {
               <h6 className="mt-2">Sidebar</h6>
               <ButtonGroup size="sm">
                 <Button
-                  color={this.props.mode == 'plague' ? "danger" :"primary"}
+                  color={this.props.mode === 'plague' ? "danger" :"primary"}
                   onClick={() => this.toggleVisibilitySidebar("show")}
                   className={
                     this.props.sidebarVisibility === "show" ? "active" : ""
@@ -123,7 +123,7 @@ class Header extends React.Component {
                   Show
                 </Button>
                 <Button
-                  color={this.props.mode == 'plague' ? "danger" :"primary"}
+                  color={this.props.mode === 'plague' ? "danger" :"primary"}
                   onClick={() => this.toggleVisibilitySidebar("hide")}
                   className={
                     this.props.sidebarVisibility === "hide" ? "active" : ""

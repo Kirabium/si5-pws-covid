@@ -5,7 +5,13 @@ import {IHospitalDay} from "../../lib/network.interface";
 
 export class HospitalDayController {
     public async getHospitalDays(req: Request, res: Response) {
-        return res.status(200).json(await HospitalDayModel.find());
+        if(req.params.year){
+            if(req.params.month){
+                if(req.params.day)
+                    return res.status(200).json(await HospitalDayModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));
+                return res.status(200).json(await HospitalDayModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
+            } return res.status(200).json(await HospitalDayModel.find({jour: {$regex: "^"+req.params.year}}));
+        } return res.status(200).json(await HospitalDayModel.find());
     }
 
     public async getHospitalDaysByPage(req: Request, res: Response) {

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "33087e47-9f8f-4a9b-b2a8-118bc44b6a95",
+		"_postman_id": "c7a152a8-cc52-40c1-9319-260a0eaf546f",
 		"name": "pws",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -19,6 +19,45 @@
 					"port": "2023",
 					"path": [
 						"hospitalDay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET HospitalDay date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/hospitalDay/:year/:month/:day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"hospitalDay",
+						":year",
+						":month",
+						":day"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2020",
+							"description": "Year you wish to get data on"
+						},
+						{
+							"key": "month",
+							"value": "03",
+							"description": "Month you wish to get data on"
+						},
+						{
+							"key": "day",
+							"value": "18",
+							"description": "Day you wish to get data on"
+						}
 					]
 				}
 			},
@@ -46,6 +85,44 @@
 			"response": []
 		},
 		{
+			"name": "GET IncidenceDayReg date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/reg/day/:year/:month/:day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"reg",
+						"day",
+						":year",
+						":month",
+						":day"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2020"
+						},
+						{
+							"key": "month",
+							"value": "05"
+						},
+						{
+							"key": "day",
+							"value": "13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET IncidenceDayFrance",
 			"request": {
 				"method": "GET",
@@ -61,6 +138,44 @@
 						"incidence",
 						"france",
 						"day"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceDayFrance date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/france/day/:year/:month/:day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"france",
+						"day",
+						":year",
+						":month",
+						":day"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2020"
+						},
+						{
+							"key": "month",
+							"value": "05"
+						},
+						{
+							"key": "day",
+							"value": "13"
+						}
 					]
 				}
 			},
@@ -88,6 +203,50 @@
 			"response": []
 		},
 		{
+			"name": "GET IncidenceDayDep date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/dep/day/:year/:month/:day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"dep",
+						"day",
+						":year",
+						":month",
+						":day"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2020",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "month",
+							"value": "05",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "day",
+							"value": "13",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET IncidenceWeekDep",
 			"request": {
 				"method": "GET",
@@ -103,6 +262,44 @@
 						"incidence",
 						"dep",
 						"week"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceWeekDep date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/dep/week/:year/:month/:day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"dep",
+						"week",
+						":year",
+						":month",
+						":day"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2020"
+						},
+						{
+							"key": "month",
+							"value": "05"
+						},
+						{
+							"key": "day",
+							"value": "17"
+						}
 					]
 				}
 			},
@@ -130,6 +327,50 @@
 			"response": []
 		},
 		{
+			"name": "GET IncidenceWeekReg date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/reg/week/:year/:month/:day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"reg",
+						"week",
+						":year",
+						":month",
+						":day"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2020",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "month",
+							"value": "05",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "day",
+							"value": "17",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET IncidenceWeekFrance",
 			"request": {
 				"method": "GET",
@@ -145,6 +386,50 @@
 						"incidence",
 						"france",
 						"week"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET IncidenceWeekFrance date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2023/incidence/france/week/:year/:month/:day",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2023",
+					"path": [
+						"incidence",
+						"france",
+						"week",
+						":year",
+						":month",
+						":day"
+					],
+					"variable": [
+						{
+							"key": "year",
+							"value": "2020",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "month",
+							"value": "05",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "day",
+							"value": "17",
+							"type": "text",
+							"enabled": true
+						}
 					]
 				}
 			},

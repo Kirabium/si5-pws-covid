@@ -43,8 +43,8 @@ function CovidCounter() {
 
     return (
         <div className="covid-counter">
-            <p className="count">Nombre de décès : <span id="deathCounter">{deathCounter !==0 ? deathCounter : 'Chargement...'}</span></p>
-            <p className="count">Nombre de personnes hospitalisé : <span id="hospitalCounter">{hospitalCounter !==0 ? hospitalCounter : 'Chargement...'}</span></p>
+            <p className="count">Nombre de décès en France: <span id="deathCounter">{deathCounter !==0 ? deathCounter : 'Chargement...'}</span></p>
+            <p className="count">Nombre de personnes hospitalisé en France : <span id="hospitalCounter">{hospitalCounter !==0 ? hospitalCounter : 'Chargement...'}</span></p>
         </div>
     );
 }

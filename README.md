@@ -34,4 +34,4 @@ npm install
 ```bash
 npm start
 ```
-
+## Architecture

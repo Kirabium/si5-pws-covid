@@ -21,10 +21,6 @@ class Sidebar extends React.Component {
         sidebarStatic: false,
     };
 
-    constructor(props) {
-        super(props);
-
-    }
 
     componentDidMount() {
         this.element.addEventListener('transitionend', () => {
@@ -86,15 +82,6 @@ class Sidebar extends React.Component {
                         iconName="flaticon-list"
                         link="/app/incidence/list"
                         index="indicence"
-                    />
-                    <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Charts exemple"
-                        isHeader
-                        iconName="flaticon-layers"
-                        link="/app/charts"
-                        index="charts"
                     />
                 </ul>
             </nav>

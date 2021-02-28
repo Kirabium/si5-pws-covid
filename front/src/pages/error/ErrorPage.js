@@ -1,9 +1,6 @@
 import React from 'react';
 import {
   Container,
-  Form,
-  FormGroup,
-  Input,
   Button,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -20,7 +17,7 @@ class ErrorPage extends React.Component {
             <p className={s.errorInfo}>
               Opps, it seems that this page does not exist here.
             </p>
-            <Link to="">
+            <Link to="/app">
               <Button className={s.errorBtn} type="submit" color="inverse">
                 Back to dashboard
               </Button>
