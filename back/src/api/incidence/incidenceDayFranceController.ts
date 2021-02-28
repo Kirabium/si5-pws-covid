@@ -5,7 +5,13 @@ import {IIncidenceDayFrance} from "../../lib/network.interface";
 
 export class IncidenceDayFranceController {
     public async getIncidencesDayFrance(req: Request, res: Response) {
-        return res.status(200).json(await IncidenceDayFranceModel.find());
+        if(req.params.year){
+            if(req.params.month){
+                if(req.params.day)
+                    return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));
+                return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
+            } return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year}}));
+        } return res.status(200).json(await IncidenceDayFranceModel.find());
     }
 
     public async getIncidencesDayFranceByPage(req: Request, res: Response) {

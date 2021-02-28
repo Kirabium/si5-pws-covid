@@ -5,7 +5,16 @@ import {IIncidenceDayDep} from "../../lib/network.interface";
 
 export class IncidenceDayDepController {
     public async getIncidencesDayDep(req: Request, res: Response) {
-        return res.status(200).json(await IncidenceDayDepModel.find());
+        if(req.params.year){
+            if(req.params.month){
+                if(req.params.day){
+                    const regExp = new RegExp("^"+req.params.year+"-"+req.params.month+"-"+req.params.day)
+                    return res.status(200).json(await IncidenceDayDepModel.find({jour: regExp}));
+                } const regExp = new RegExp("^"+req.params.year+"-"+req.params.month)
+                return res.status(200).json(await IncidenceDayDepModel.find({jour: regExp}));
+            } const regExp = new RegExp("^"+req.params.year) 
+            return res.status(200).json(await IncidenceDayDepModel.find({jour: regExp}));
+        } return res.status(200).json(await IncidenceDayDepModel.find());
     }
 
     public async getIncidencesDayDepByPage(req: Request, res: Response) {
