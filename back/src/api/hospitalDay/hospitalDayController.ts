@@ -16,9 +16,10 @@ export class HospitalDayController {
 
     public async getHospitalDaysByPage(req: Request, res: Response) {
         const pageNum : string = req.params['page_num'];
+        const sexe : number = req.params['sexe'] ? Number(req.params['sexe']) : 0;
         const pack_size : number = 20;
         const start : number = pack_size*(Number(pageNum)-1);
-        const resultat : IHospitalDay[] = await HospitalDayModel.find().skip(start).limit(pack_size);
+        const resultat : IHospitalDay[] = await HospitalDayModel.find({sexe:sexe}).skip(start).limit(pack_size);
         const nextPage : string = `http://localhost:2023/hospitalDay/${+pageNum + 1}`;
         const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/hospitalDay/${+pageNum - 1}` : null;
         let jsonRes : any = {
