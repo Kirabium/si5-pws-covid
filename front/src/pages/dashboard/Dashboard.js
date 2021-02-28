@@ -41,7 +41,7 @@ class Dashboard extends React.Component {
     let data = res.data
     this.setState({casFranceByDate : data.casFranceByDate})
     this.setState({listCasDepByDate : data.listCasDepByDate})
-    this.setState({CasDepByDate : data.CasDepByDate})
+    this.setState({CasDepByDate : data.CasDepByDate[0]})
     this.setState({HospitalByDepAndDate : data.HospitalByDepAndDate})
     this.setState({listCasFranceByAge : data.listCasFranceByAge})
 

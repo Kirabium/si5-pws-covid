@@ -64,7 +64,7 @@ function App(props) {
 
         document.documentElement.style.setProperty('--current-gradient', `var(--${storageMode}-gradient)`)
         document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${storageMode})`)
-        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        if(storageMode!='dark' && window.matchMedia('(prefers-color-scheme: dark)').matches){
             toggle()
         }
     },[])
