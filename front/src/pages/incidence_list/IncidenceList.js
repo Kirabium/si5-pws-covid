@@ -90,24 +90,20 @@ class IncidenceList extends React.Component {
         </Row>
     };
 
-    handleChange(value, formattedValue) {
-        this.setState({
-            //value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
-            //formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
-            data: formattedValue,
-            filteredList: [
-                {
-                    "_id": "603b51d6f46e4900affe4736",
-                    "dep": "01",
-                    "sexe": 0,
-                    "jour": "2020-03-18",
-                    "hosp": 2,
-                    "rea": 0,
-                    "rad": 1,
-                    "dc": 0,
-                    "__v": 0
-                }]
-        })
+    async handleChange(value, formattedValue) {
+        let dateVal = new Date(value);
+        let day = dateVal.getDate().toString();
+        let month = (dateVal.getMonth() + 1).toString();
+        let year = dateVal.getFullYear().toString();
+
+        let resString = year + "/" + (month.length == 1 ? "0" + month : month) + "/" + (day.length == 1 ? "0" + day : day);
+        console.log(resString);
+
+        let result = await axios.get(this.getCurrentURL() + resString);
+        let page = result.data;
+        console.log(this.state);
+        console.log(this.getCurrentURL() + resString);
+        this.setState({date: value, filteredList: page});
     }
 
     displayFilters = () => {
@@ -179,13 +175,17 @@ class IncidenceList extends React.Component {
     }
 
     async updateUI() {
+        await this.getPage(this.getCurrentURL() + "1")
+    }
+
+    getCurrentURL() {
         let uri = "http://localhost:2023/incidence/";
         if (this.state.dep) uri += "dep/"
         if (this.state.reg) uri += "reg/"
         if (this.state.france) uri += "france/"
-        if (this.state.day) uri += "day/1"
-        if (this.state.week) uri += "week/1"
-        await this.getPage(uri)
+        if (this.state.day) uri += "day/"
+        if (this.state.week) uri += "week/"
+        return uri;
     }
 
     async componentDidMount() {
