@@ -17,7 +17,7 @@ import '../styles/theme.scss';
 
 function App(props) {
     const [LatLng, setLatLng] = useState({lat: null, lng: null});
-    const [location, setLocation] = useState('UNKNOWN')
+    const [location, setLocation] = useState('Unkwonw')
     const [storageMode, setStorageMode] = useLocalStorage('theme','plague');
     const [modal, setModal] = useState(false);
 
@@ -43,8 +43,6 @@ function App(props) {
                     const info = data.data.features;
                     if(info.length > 0) {
                         setLocation(`${info[0].properties.postcode.substring(0,2)}`)
-                    } else {
-                       setLocation('Unkwonw')
                     }
                 })
             });
@@ -87,7 +85,7 @@ function App(props) {
                 <HashRouter>
                     <Switch>
                         <Route path="/" exact render={() => <Redirect to="/app"/>}/>
-                        <Route path="/app" component={()=><LayoutComponent mode={storageMode} onchange={handleChangeMode}/>}/>
+                        <Route path="/app" component={()=><LayoutComponent mode={storageMode} onchange={handleChangeMode} localisation={location}/>}/>
                         <Route path="/error" exact component={ErrorPage}/>
                         <Route component={ErrorPage}/>
                         <Redirect from="*" to="/app/dashboard"/>

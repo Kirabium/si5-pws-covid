@@ -39,7 +39,7 @@ class Layout extends React.Component {
             <main className={s.content}>
                   <Switch>
                     <Route path="/app" exact render={() => <Redirect to="/app/dashboard" />} />
-                    <Route path="/app/dashboard" exact component={()=><Dashboard mode={this.props.mode} />} />
+                    <Route path="/app/dashboard" exact component={()=><Dashboard mode={this.props.mode} localisation={this.props.localisation}/>} />
                     <Route path="/app/hospital/list" exact component={()=><HospitalList mode={this.props.mode} />} />
                     <Route path="/app/incidence/list" exact component={()=><IncidenceList mode={this.props.mode} />} />
                     <Route path="/app/charts" exact component={Charts} />
