@@ -20,8 +20,8 @@ export class HospitalDayController {
         const pack_size : number = 20;
         const start : number = pack_size*(Number(pageNum)-1);
         const resultat : IHospitalDay[] = await HospitalDayModel.find({sexe:sexe}).skip(start).limit(pack_size);
-        const nextPage : string = `http://localhost:2023/hospitalDay/${+pageNum + 1}`;
-        const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/hospitalDay/${+pageNum - 1}` : null;
+        const nextPage : string = `http://localhost:2023/hospitalDay/${+pageNum + 1}/${sexe}`;
+        const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/hospitalDay/${+pageNum - 1}/${sexe}` : null;
         let jsonRes : any = {
             nextPage: nextPage,
             prevPage: prevPage,
