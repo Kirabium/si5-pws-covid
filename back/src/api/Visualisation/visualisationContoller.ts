@@ -11,7 +11,7 @@ export class VisualisationContoller {
         const  CasDepByDate= await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, dep: req.params.dep, cl_age90 :Number(req.params.age)});
         const  HospitalByDepAndDate = await HospitalDayModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, dep: req.params.dep});
         //donut
-        const listCasFranceByAge= await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}});
+        const listCasFranceByAge= await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}});
         
         let jsonRes = {
             casFranceByDate: casFranceByDate,
