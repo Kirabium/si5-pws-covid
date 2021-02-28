@@ -203,31 +203,31 @@ class IncidenceList extends React.Component {
         return <thead>
         <tr className="fs-sm">
 
-            {this.state.day && <th className="hidden-sm-down">jour</th>}
-            {this.state.week && <th className="hidden-sm-down">week</th>}
+            {this.state.day && <th className="hidden-sm-down">Day</th>}
+            {this.state.week && <th className="hidden-sm-down">Week</th>}
 
-            {this.state.dep && <th className="hidden-sm-down">P</th>}
-            {this.state.dep && <th className="hidden-sm-down">cl_age90</th>}
-            {this.state.dep && <th className="hidden-sm-down">pop</th>}
-            {this.state.dep && <th className="hidden-sm-down">dep</th>}
+            {this.state.dep && <th className="hidden-sm-down">Number of cases</th>}
+            {this.state.dep && <th className="hidden-sm-down">Age range</th>}
+            {this.state.dep && <th className="hidden-sm-down">Number of people in the age range</th>}
+            {this.state.dep && <th className="hidden-sm-down">Department</th>}
 
-            {this.state.reg && <th className="hidden-sm-down">P_f</th>}
-            {this.state.reg && <th className="hidden-sm-down">P_h</th>}
-            {this.state.reg && <th className="hidden-sm-down">P</th>}
-            {this.state.reg && <th className="hidden-sm-down">pop_f</th>}
-            {this.state.reg && <th className="hidden-sm-down">pop_h</th>}
-            {this.state.reg && <th className="hidden-sm-down">cl_age90</th>}
-            {this.state.reg && <th className="hidden-sm-down">pop</th>}
-            {this.state.reg && <th className="hidden-sm-down">reg</th>}
+            {this.state.reg && <th className="hidden-sm-down">Number of women cases</th>}
+            {this.state.reg && <th className="hidden-sm-down">Number of men cases</th>}
+            {this.state.reg && <th className="hidden-sm-down">Number of cases</th>}
+            {this.state.reg && <th className="hidden-sm-down">Number of women in the age range</th>}
+            {this.state.reg && <th className="hidden-sm-down">Number of men in the age range</th>}
+            {this.state.reg && <th className="hidden-sm-down">Age range</th>}
+            {this.state.reg && <th className="hidden-sm-down">Number of people in the age range</th>}
+            {this.state.reg && <th className="hidden-sm-down">Region</th>}
 
-            {this.state.france && <th className="hidden-sm-down">P_f</th>}
-            {this.state.france && <th className="hidden-sm-down">P_h</th>}
-            {this.state.france && <th className="hidden-sm-down">P</th>}
-            {this.state.france && <th className="hidden-sm-down">pop_f</th>}
-            {this.state.france && <th className="hidden-sm-down">pop_h</th>}
-            {this.state.france && <th className="hidden-sm-down">cl_age90</th>}
-            {this.state.france && <th className="hidden-sm-down">pop</th>}
-            {this.state.france && <th className="hidden-sm-down">fra</th>}
+            {this.state.france && <th className="hidden-sm-down">Number of women cases</th>}
+            {this.state.france && <th className="hidden-sm-down">Number of men cases</th>}
+            {this.state.france && <th className="hidden-sm-down">Number of cases</th>}
+            {this.state.france && <th className="hidden-sm-down">Number of women in the age range</th>}
+            {this.state.france && <th className="hidden-sm-down">Number of men in the age range</th>}
+            {this.state.france && <th className="hidden-sm-down">Age range</th>}
+            {this.state.france && <th className="hidden-sm-down">Number of people in the age range</th>}
+            {this.state.france && <th className="hidden-sm-down">France</th>}
 
         </tr>
         </thead>

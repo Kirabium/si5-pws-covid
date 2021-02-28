@@ -175,13 +175,13 @@ class HospitalList extends React.Component {
                 <Table striped>
                     <thead>
                     <tr className="fs-sm">
-                        <th className="hidden-sm-down">Jour</th>
+                        <th className="hidden-sm-down">Day</th>
                         <th className="hidden-sm-down">Hospitalisations</th>
-                        <th className="hidden-sm-down">Réanimation</th>
-                        <th className="hidden-sm-down">Retour à domicile</th>
-                        <th className="hidden-sm-down">Département</th>
-                        <th className="hidden-sm-down">Décès</th>
-                        <th className="hidden-sm-down">Sexe</th>
+                        <th className="hidden-sm-down">Reanimation</th>
+                        <th className="hidden-sm-down">Back to home</th>
+                        <th className="hidden-sm-down">Department</th>
+                        <th className="hidden-sm-down">Deaths</th>
+                        <th className="hidden-sm-down">Sex</th>
                     </tr>
                     </thead>
                     <tbody>
