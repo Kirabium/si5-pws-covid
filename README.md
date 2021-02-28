@@ -43,7 +43,15 @@ npm install
 npm start
 ```
 
-Note : For some reasons, the CORS can block the queries of the front to the back-end, if so, you will not have any data and the console will give you an error related to CORS. In chrome you can install the following extension : https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf and add localhost in the white list then toggle on the extension.
+Note : For some reasons, the CORS can block the queries of the front to the back-end, if so, you will not have any data and the console will give you an error related to CORS. To solve this issue you can install the following extensions on your Browser : 
+
+> [Chrome](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf)
+> 
+> [Edge](https://microsoftedge.microsoft.com/addons/detail/allow-cors-accesscontro/bhjepjpgngghppolkjdhckmnfphffdag)
+> 
+> [Firefox](https://addons.mozilla.org/en-US/firefox/addon/access-control-allow-origin/)
+
+and add localhost in the whitelist then toggle on the extension.
 
 ## Architecture
 ![Sans titre](https://user-images.githubusercontent.com/32424601/109426505-4e6ee580-79ee-11eb-8eb7-88df8420d8bc.png)
