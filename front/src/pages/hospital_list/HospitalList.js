@@ -12,7 +12,7 @@ import {
     DropdownItem,
     FormGroup,
     Label,
-    FormText
+    FormText, ButtonToolbar, ButtonGroup
 } from "reactstrap";
 import Button from "reactstrap/lib/Button";
 import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
@@ -26,7 +26,8 @@ class HospitalList extends React.Component {
         this.state = {
             page: null,
             filteredList: null,
-            date: null
+            date: null,
+            sexe: 0
         };
     }
 
@@ -64,10 +65,10 @@ class HospitalList extends React.Component {
                 {this.state.filteredList &&
                 <Button outline color="secondary" onClick={async () => {
                     await this.setState({filteredList: null});
-                    this.getPage("http://localhost:2023/hospitalDay/1")
+                    this.getPage("http://localhost:2023/hospitalDay/1/" + this.state.sexe)
                 }}>Back</Button>}
                 {this.isFirstPage() &&
-                <Button outline color="secondary" onClick={() => this.getPage("http://localhost:2023/hospitalDay/1")}>Go
+                <Button outline color="secondary" onClick={() => this.getPage("http://localhost:2023/hospitalDay/1/" + this.state.sexe)}>Go
                     to first page</Button>}
                 {this.isFirstPage() &&
                 <Button outline color="secondary"
@@ -91,7 +92,7 @@ class HospitalList extends React.Component {
 
             let result = await axios.get("http://localhost:2023/hospitalDay/" + resString);
             let page = result.data;
-            this.setState({date: value, filteredList: page});
+            this.setState({date: value, filteredList: page, sexe: 0});
         } else {
             await this.setState({filteredList: null, date: null});
             this.getPage("http://localhost:2023/hospitalDay/1")
@@ -108,6 +109,39 @@ class HospitalList extends React.Component {
                                 onChange={(v, f) => this.handleChange(v, f)}/>
                     <FormText>Help</FormText>
                 </FormGroup>
+                <Row className={s.buttonRow}>
+                    <ButtonToolbar style={{marginBottom: 16}}>
+                        <ButtonGroup>
+                            <Button outline color="secondary" style={this.state.sexe === 0 ? {
+                                backgroundColor: '#ffffff',
+                                color: "#000000"
+                            } : {backgroundColor: 'transparent', color: "#ffffff"}}
+                                    onClick={() => {
+                                        this.setState({sexe: 0, filteredList: null}, () =>
+                                            this.getPage("http://localhost:2023/hospitalDay/1/0")
+                                        )
+                                    }}>All</Button>
+                            <Button outline color="secondary" style={this.state.sexe === 1 ? {
+                                backgroundColor: '#ffffff',
+                                color: "#000000"
+                            } : {backgroundColor: 'transparent', color: "#ffffff"}}
+                                    onClick={() => {
+                                        this.setState({sexe: 1, filteredList: null}, () =>
+                                            this.getPage("http://localhost:2023/hospitalDay/1/1")
+                                        )
+                                    }}>Men</Button>
+                            <Button outline color="secondary"
+                                    style={this.state.sexe === 2 ? {
+                                        backgroundColor: '#ffffff',
+                                        color: "#000000"
+                                    } : {backgroundColor: 'transparent', color: "#ffffff"}} onClick={() => {
+                                this.setState({sexe: 2, filteredList: null}, () =>
+                                    this.getPage("http://localhost:2023/hospitalDay/1/2")
+                                )
+                            }}>Women</Button>
+                        </ButtonGroup>
+                    </ButtonToolbar>
+                </Row>
             </Col>
         </Row>
     };
@@ -127,7 +161,7 @@ class HospitalList extends React.Component {
     }
 
     async componentDidMount() {
-        let pathURI = "http://localhost:2023/hospitalDay/1";
+        let pathURI = "http://localhost:2023/hospitalDay/1/0";
         await this.getPage(pathURI)
     }
 
