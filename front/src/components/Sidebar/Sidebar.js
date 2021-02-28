@@ -83,6 +83,15 @@ class Sidebar extends React.Component {
                         link="/app/incidence/list"
                         index="indicence"
                     />
+                    <LinksGroup
+                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+                        activeItem={this.props.activeItem}
+                        header="Contact"
+                        isHeader
+                        iconName="flaticon-edit"
+                        link="/app/contact"
+                        index="contact"
+                    />
                 </ul>
             </nav>
         );
