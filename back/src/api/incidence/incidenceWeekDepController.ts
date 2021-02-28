@@ -1,10 +1,16 @@
 import {Request, Response} from 'express';
 import {IncidenceWeekDepModel} from "../../lib/incidence_week_dep.model";
 import {IIncidenceWeekDep} from "../../lib/network.interface";
+import {getNumberOfWeek} from "./weekNumber";
 // @ts-ignore
 
 export class IncidenceWeekDepController {
     public async getIncidencesWeekDep(req: Request, res: Response) {
+        if(req.params.year && req.params.month && req.params.day){
+            const week = getNumberOfWeek(req.params.month+"/"+req.params.day+"/"+req.params.year)
+            return res.status(200).json(await IncidenceWeekDepModel
+                .find({week:req.params.year+"-S"+week}));
+            }
         return res.status(200).json(await IncidenceWeekDepModel.find());
     }
 
