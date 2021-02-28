@@ -19,13 +19,13 @@ class am4chartDonut extends Component {
     let chart = am4core.create("chartDonut", am4charts.PieChart);
 
     let newData = []
-    this.state.listCasFranceByAge.map(cas =>{
+    this.state.listCasFranceByAge? this.state.listCasFranceByAge.map(cas =>{
       if(cas.cl_age90 != 90){
         newData.push({"age": (cas.cl_age90-9)+"-"+cas.cl_age90,"case": cas.P })
       }else {
         newData.push({"age": cas.cl_age90+"+","case": cas.P })
       }
-    });
+    }): null;
     // Add data
     chart.data = newData;
 

@@ -104,7 +104,7 @@ class Am4chartMap extends Component {
     labelTemplate.fontWeight = 500
     labelTemplate.fill = am4core.color(this.colors[this.props.mode].text);
 
-    let newData =  this.state.listCasDepByDate;
+    let newData =  this.state.listCasDepByDate? this.state.listCasDepByDate: ["0"];
     // Set up label series to populate
     polygonSeries.events.on("inited", function () {
         newData.map(incident =>{
@@ -135,7 +135,7 @@ class Am4chartMap extends Component {
           <p className="h3 m-0">
             <span className="mr-xs fw-normal">
               <AnimateNumber
-                value={this.state.casFranceByDate.P}
+                value={this.state.casFranceByDate? this.state.casFranceByDate.P : 0}
                 initialValue={0}
                 duration={1000} 
                 stepPrecision={0}

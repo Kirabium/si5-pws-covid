@@ -80,21 +80,21 @@ class Dashboard extends React.Component {
               </p>
               <p>
                 <span className="circle bg-default text-white"><FontAwesomeIcon icon={faVirus} /></span> 
-                {this.state.CasDepByDate.P} case 
+                {this.state.CasDepByDate ? this.state.CasDepByDate.P: "x"} case 
               </p>
               <div className="row progress-stats">
                 <div className="col-md-9 col-12">
                   <h6 className="name fw-semi-bold">Number of hospitalized cases</h6>
                   <Progress
                     color="info"
-                    value={(this.state.HospitalByDepAndDate.hosp/this.state.CasDepByDate.P *100).toString()}
+                    value={this.state.CasDepByDate && this.state.HospitalByDepAndDate ?(this.state.HospitalByDepAndDate.hosp/this.state.CasDepByDate.P *100).toString(): "0"}
                     className="bg-custom-dark progress-xs"
                   />
                 </div>
                 <div className="col-md-3 col-12 text-center">
                   <span className="status rounded rounded-lg bg-default text-light">
                     <small>
-                      <AnimateNumber value={this.state.HospitalByDepAndDate.hosp} />
+                      <AnimateNumber value={this.state.HospitalByDepAndDate ? this.state.HospitalByDepAndDate.hosp: 0} />
                     </small>
                   </span>
                 </div>
@@ -104,14 +104,14 @@ class Dashboard extends React.Component {
                   <h6 className="name fw-semi-bold">Number of cases in resuscitation</h6>
                   <Progress
                     color="warning"
-                    value={(this.state.HospitalByDepAndDate.rea/this.state.CasDepByDate.P *100).toString()}
+                    value={this.state.CasDepByDate && this.state.HospitalByDepAndDate ?(this.state.HospitalByDepAndDate.rea/this.state.CasDepByDate.P *100).toString(): "0"}
                     className="bg-custom-dark progress-xs"
                   />
                 </div>
                 <div className="col-md-3 col-12 text-center">
                   <span className="status rounded rounded-lg bg-default text-light">
                     <small>
-                      <AnimateNumber value={this.state.HospitalByDepAndDate.rea} />
+                      <AnimateNumber value={this.state.HospitalByDepAndDate? this.state.HospitalByDepAndDate.rea : 0} />
                     </small>
                   </span>
                 </div>
@@ -121,14 +121,14 @@ class Dashboard extends React.Component {
                   <h6 className="name fw-semi-bold">Number of deaths</h6>
                   <Progress
                     color="danger"
-                    value={(this.state.HospitalByDepAndDate.dc/this.state.CasDepByDate.P *100).toString()}
+                    value={this.state.CasDepByDate && this.state.HospitalByDepAndDate ?(this.state.HospitalByDepAndDate.dc/this.state.CasDepByDate.P *100).toString(): "0"}
                     className="bg-custom-dark progress-xs"
                   />
                 </div>
                 <div className="col-md-3 col-12 text-center">
                   <span className="status rounded rounded-lg bg-default text-light">
                     <small>
-                      <AnimateNumber value={this.state.HospitalByDepAndDate.dc} />
+                      <AnimateNumber value={this.state.HospitalByDepAndDate? this.state.HospitalByDepAndDate.dc : 0} />
                     </small>
                   </span>
                 </div>
@@ -138,14 +138,14 @@ class Dashboard extends React.Component {
                   <h6 className="name fw-semi-bold">Number of returns home</h6>
                   <Progress
                     color="success"
-                    value={(this.state.HospitalByDepAndDate.rad/this.state.CasDepByDate.P *100).toString()}
+                    value={this.state.CasDepByDate && this.state.HospitalByDepAndDate ?(this.state.HospitalByDepAndDate.rad/this.state.CasDepByDate.P *100).toString(): "0"}
                     className="bg-custom-dark progress-xs"
                   />
                 </div>
                 <div className="col-md-3 col-12 text-center">
                   <span className="status rounded rounded-lg bg-default text-light">
                     <small>
-                      <AnimateNumber value={this.state.HospitalByDepAndDate.rad} />
+                      <AnimateNumber value={this.state.HospitalByDepAndDate ? this.state.HospitalByDepAndDate.rad : 0} />
                     </small>
                   </span>
                 </div>
