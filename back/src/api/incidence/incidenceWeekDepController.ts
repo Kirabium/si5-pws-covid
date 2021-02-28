@@ -8,6 +8,21 @@ export class IncidenceWeekDepController {
         return res.status(200).json(await IncidenceWeekDepModel.find());
     }
 
+    public async getIncidencesDayDepByPage(req: Request, res: Response) {
+        const pageNum : string = req.params['page_num'];
+        const pack_size : number = 20;
+        const start : number = pack_size*(Number(pageNum)-1);
+        const resultat : IIncidenceWeekDep[] = await IncidenceWeekDepModel.find().skip(start).limit(pack_size);
+        const nextPage : string = `http://localhost:2023/incidence/dep/week/${+pageNum + 1}`;
+        const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/incidence/dep/week/${+pageNum - 1}` : null;
+        let jsonRes : any = {
+            nextPage: nextPage,
+            prevPage: prevPage,
+            content: resultat
+        };
+        return res.status(200).json(jsonRes);
+    }
+
     public async postIncidenceWeekDep(req: Request, res: Response) {
         let user: IIncidenceWeekDep = req.body;
         let pattern;
