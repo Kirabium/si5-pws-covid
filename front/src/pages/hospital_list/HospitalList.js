@@ -81,17 +81,21 @@ class HospitalList extends React.Component {
     };
 
     async handleChange(value, formattedValue) {
-        let dateVal = new Date(value);
-        let day = dateVal.getDate().toString();
-        let month = (dateVal.getMonth()+1).toString();
-        let year = dateVal.getFullYear().toString();
+        if (value) {
+            let dateVal = new Date(value);
+            let day = dateVal.getDate().toString();
+            let month = (dateVal.getMonth() + 1).toString();
+            let year = dateVal.getFullYear().toString();
 
-        let resString = year + "/" + (month.length == 1 ? "0" + month : month) + "/" + (day.length == 1 ? "0" + day : day);
-        console.log(resString);
+            let resString = year + "/" + (month.length == 1 ? "0" + month : month) + "/" + (day.length == 1 ? "0" + day : day);
 
-        let result = await axios.get("http://localhost:2023/hospitalDay/" + resString);
-        let page = result.data;
-        this.setState({date: value, filteredList: page});
+            let result = await axios.get("http://localhost:2023/hospitalDay/" + resString);
+            let page = result.data;
+            this.setState({date: value, filteredList: page});
+        } else {
+            await this.setState({filteredList: null, date: null});
+            this.getPage("http://localhost:2023/hospitalDay/1")
+        }
     }
 
     displayFilters = () => {

@@ -91,19 +91,24 @@ class IncidenceList extends React.Component {
     };
 
     async handleChange(value, formattedValue) {
-        let dateVal = new Date(value);
-        let day = dateVal.getDate().toString();
-        let month = (dateVal.getMonth() + 1).toString();
-        let year = dateVal.getFullYear().toString();
+        if(value) {
+            let dateVal = new Date(value);
+            let day = dateVal.getDate().toString();
+            let month = (dateVal.getMonth() + 1).toString();
+            let year = dateVal.getFullYear().toString();
 
-        let resString = year + "/" + (month.length == 1 ? "0" + month : month) + "/" + (day.length == 1 ? "0" + day : day);
-        console.log(resString);
+            let resString = year + "/" + (month.length == 1 ? "0" + month : month) + "/" + (day.length == 1 ? "0" + day : day);
+            console.log(resString);
 
-        let result = await axios.get(this.getCurrentURL() + resString);
-        let page = result.data;
-        console.log(this.state);
-        console.log(this.getCurrentURL() + resString);
-        this.setState({date: value, filteredList: page});
+            let result = await axios.get(this.getCurrentURL() + resString);
+            let page = result.data;
+            console.log(this.state);
+            console.log(this.getCurrentURL() + resString);
+            this.setState({date: value, filteredList: page});
+        }else{
+            await this.setState({filteredList: null, date: null});
+            this.updateUI()
+        }
     }
 
     displayFilters = () => {
@@ -122,33 +127,34 @@ class IncidenceList extends React.Component {
             <Row className={s.buttonRow}>
                 <ButtonToolbar>
                     <ButtonGroup>
-                        <Button outline className={this.state.day ? s.activeButton : s.incativeButton} onClick={() => {
+                        <Button outline style={this.state.day ? {backgroundColor: '#ffffff', color: "#000000"}:{backgroundColor: 'transparent', color: "#ffffff"} } onClick={() => {
                             this.setState({day: true, week: false}, () =>
                                 this.updateUI()
                             )
                         }}>Daily</Button>
                         <Button outline color="secondary"
-                                className={this.state.week ? s.activeButton : s.incativeButton} onClick={() => {
+
+                                style={this.state.week ? {backgroundColor: '#ffffff', color: "#000000"}:{backgroundColor: 'transparent', color: "#ffffff"} } onClick={() => {
                             this.setState({day: false, week: true}, () =>
                                 this.updateUI()
                             )
                         }}>Weekly</Button>
                     </ButtonGroup>
                     <ButtonGroup>
-                        <Button outline color="secondary" className={this.state.dep ? s.activeButton : s.incativeButton}
+                        <Button outline color="secondary" style={this.state.dep ? {backgroundColor: '#ffffff', color: "#000000"}:{backgroundColor: 'transparent', color: "#ffffff"} }
                                 onClick={() => {
                                     this.setState({dep: true, reg: false, france: false}, () =>
                                         this.updateUI()
                                     )
                                 }}>Department</Button>
-                        <Button outline color="secondary" className={this.state.reg ? s.activeButton : s.incativeButton}
+                        <Button outline color="secondary" style={this.state.reg ? {backgroundColor: '#ffffff', color: "#000000"}:{backgroundColor: 'transparent', color: "#ffffff"} }
                                 onClick={() => {
                                     this.setState({dep: false, reg: true, france: false}, () =>
                                         this.updateUI()
                                     )
                                 }}>Region</Button>
                         <Button outline color="secondary"
-                                className={this.state.france ? s.activeButton : s.incativeButton} onClick={() => {
+                                style={this.state.france ? {backgroundColor: '#ffffff', color: "#000000"}:{backgroundColor: 'transparent', color: "#ffffff"} } onClick={() => {
                             this.setState({dep: false, reg: false, france: true}, () =>
                                 this.updateUI()
                             )
