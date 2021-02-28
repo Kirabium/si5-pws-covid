@@ -12,8 +12,16 @@ docker-compose build
 docker-compose up
 ```
 
-The server and mongo database should be running on localhost
-note : the mongoDB image won't run on windows, you should execute docker in an Unix or Mac environment
+The server and mongo database are now running on localhost
+note : the mongoDB image won't run on windows (exit 14), you should execute docker in an Unix or Mac environment
+
+Because of the memory constrainst, the database is not populated by default, you should run the following queries (in PostMan or other) :
+POST : http://localhost:2023/db/init
+POST : http://localhost:2023/db/init/hp
+
+with an empty body
+
+The backend is now ready to work.
 
 ## Running the web app
 
@@ -34,4 +42,10 @@ npm install
 ```bash
 npm start
 ```
+
+Note : For some reasons, the CORS can block the queries of the front to the back-end, if so, you will not have any data and the console will give you an error related to CORS. In chrome you can install the following extension : https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf and add localhost in the white list then toggle on the extension.
+
 ## Architecture
+![Sans titre](https://user-images.githubusercontent.com/32424601/109426505-4e6ee580-79ee-11eb-8eb7-88df8420d8bc.png)
+
+We got the React app as front-end (client-side), a NodeJS application using express and a MongoDB both running in containers in Docker environment
