@@ -8,76 +8,105 @@ import s from '../am4chartMap/am4chartMap.module.scss';
 am4core.useTheme(am4themes_animated);
 am4core.useTheme(am4themes_kelly);
 
+const formatDate = (d) =>{
+  var date = d,
+  month = '' + (date.getMonth() + 1),
+  day = '' + date.getDate(),
+  year = date.getFullYear();
 
+if (month.length < 2) 
+  month = '0' + month;
+if (day.length < 2) 
+  day = '0' + day;
+
+return [year, month, day].join('-');
+}
 
 class am4chartMultiCharts extends Component {
 
+
   componentDidMount() {
-    let chart = am4core.create("chartdiv", am4charts.XYChart);
+    let chart = am4core.create("chartMulti", am4charts.XYChart);
 
     // Add data
     chart.data = [{
-    "country": "Lithuania",
+    "country": formatDate(new Date(2021,2,10)),
     "litres": 501.9,
     "units": 250
     }, {
-    "country": "Czech Republic",
+    "country": formatDate(new Date(2021,2,11)),
     "litres": 301.9,
     "units": 222
     }, {
-    "country": "Ireland",
+    "country": formatDate(new Date(2021,2,12)),
     "litres": 201.1,
     "units": 170
     }, {
-    "country": "Germany",
+    "country": formatDate(new Date(2021,2,13)),
     "litres": 165.8,
     "units": 122
     }, {
-    "country": "Australia",
+    "country": formatDate(new Date(2021,2,14)),
     "litres": 139.9,
     "units": 99
     }, {
-    "country": "Austria",
+    "country":formatDate(new Date(2021,2,15)),
     "litres": 128.3,
     "units": 85
     }, {
-    "country": "UK",
+    "country": formatDate(new Date(2021,2,16)),
     "litres": 99,
     "units": 93
     }, {
-    "country": "Belgium",
+    "country": formatDate(new Date(2021,2,17)),
     "litres": 60,
     "units": 50
     }, {
-    "country": "The Netherlands",
+    "country": formatDate(new Date(2021,2,18)),
     "litres": 50,
     "units": 42
     }];
 
     // Create axes
     let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.renderer.grid.template.location = 0;
     categoryAxis.dataFields.category = "country";
-    categoryAxis.renderer.minGridDistance = 40;
-    categoryAxis.title.text = "Countries";
+    categoryAxis.title.text = "Dates";
     categoryAxis.title.fill = am4core.color("#fff");
 
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.title.text = "Litres sold (M)";
+    valueAxis.title.text = "Nombre de personne";
     valueAxis.title.fill = am4core.color("#fff");
 
     // Create series
-    let series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.valueY = "litres";
-    series.dataFields.categoryX = "country";
-    series.name = "Sales";
-    series.tooltipText = "{name}: [bold]{valueY}[/]";
+    let mort = chart.series.push(new am4charts.ColumnSeries());
+    mort.dataFields.valueY = "litres";
+    mort.dataFields.categoryX = "country";
+    mort.name = "Morts";
+    mort.tooltipText = "{name}: [bold]{valueY}[/]"
+    mort.fill = am4core.color("red");
 
-    let series2 = chart.series.push(new am4charts.LineSeries());
-    series2.dataFields.valueY = "units";
-    series2.dataFields.categoryX = "country";
-    series2.name = "Units";
-    series2.tooltipText = "{name}: [bold]{valueY}[/]";
-    series2.strokeWidth = 3;
+    let home = chart.series.push(new am4charts.ColumnSeries());
+    home.dataFields.valueY = "units";
+    home.dataFields.categoryX = "country";
+    home.name = "Rémission";
+    home.tooltipText = "{name}: [bold]{valueY}[/]";
+    home.fill = am4core.color("green");
+
+    let rea = chart.series.push(new am4charts.LineSeries());
+    rea.dataFields.valueY = "units";
+    rea.dataFields.categoryX = "country";
+    rea.name = "Réanimation";
+    rea.tooltipText = "{name}: [bold]{valueY}[/]";
+    rea.fill = am4core.color("yellow");
+    rea.strokeWidth = 3;
+
+    let hosp = chart.series.push(new am4charts.LineSeries());
+    hosp.dataFields.valueY = "litres";
+    hosp.dataFields.categoryX = "country";
+    hosp.name = "Hospitalisé";
+    hosp.tooltipText = "{name}: [bold]{valueY}[/]";
+    hosp.strokeWidth = 3;
 
     // Add legend
     chart.legend = new am4charts.Legend();
@@ -103,7 +132,7 @@ class am4chartMultiCharts extends Component {
 
   render() {
     return (
-      <div id="chartdiv" className={s.chartdiv}></div>
+      <div id="chartMulti" className={s.chartdiv}></div>
     );
   }
 }

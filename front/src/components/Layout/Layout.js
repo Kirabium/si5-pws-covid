@@ -42,8 +42,6 @@ class Layout extends React.Component {
                     <Route path="/app/dashboard" exact component={()=><Dashboard mode={this.props.mode} localisation={this.props.localisation}/>} />
                     <Route path="/app/hospital/list" exact component={()=><HospitalList mode={this.props.mode} />} />
                     <Route path="/app/incidence/list" exact component={()=><IncidenceList mode={this.props.mode} />} />
-                    <Route path="/app/charts" exact component={Charts} />
-
                   </Switch>
               <footer className={s.contentFooter}>
                 Dashboard de visualisation des données du covid du groupe DFGH

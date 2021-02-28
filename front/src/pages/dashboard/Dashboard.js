@@ -8,6 +8,7 @@ import { faVirus } from '@fortawesome/free-solid-svg-icons'
 
 import Map from "../../components/am4chartMap/am4chartMap";
 import MultiCharts from "../../components/am4chartCharts/am4chartMultiCharts"
+import DonutChart from "../../components/am4chartCharts/am4chartDonut"
 import AnimateNumber from "react-animated-number";
 
 import s from "./Dashboard.module.scss";
@@ -41,7 +42,7 @@ class Dashboard extends React.Component {
           <Col lg={3}>
             <Widget
               className="bg-transparent"
-              title={<h5 className="fw-semi-bold">Statistiques</h5>}
+              title={<h5 className="fw-semi-bold">Vos statistiques</h5>}
             >
               <p>
                 Département : <strong>{this.state.localisation}</strong>
@@ -142,7 +143,7 @@ class Dashboard extends React.Component {
                 </h6>
               }
             >
-              un donut ? ou un histo horizontal
+              <DonutChart />
             </Widget>
           </Col>
         </Row>
