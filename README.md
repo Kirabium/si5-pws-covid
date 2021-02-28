@@ -59,3 +59,5 @@ and add localhost in the whitelist then toggle on the extension.
 ![Architecture Diagram](https://user-images.githubusercontent.com/32424601/109426505-4e6ee580-79ee-11eb-8eb7-88df8420d8bc.png)
 
 The porject consists of a React app as the front-end (client-side) and both a NodeJS application using express and a MongoDB both running in a Docker container environment
+
+For more information on the project please look at the [wiki](https://github.com/Kirabium/si5-pws-covid/wiki)
