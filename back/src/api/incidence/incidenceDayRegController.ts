@@ -5,7 +5,13 @@ import {IIncidenceDayReg} from "../../lib/network.interface";
 
 export class IncidenceDayRegController {
     public async getIncidencesDayReg(req: Request, res: Response) {
-        return res.status(200).json(await IncidenceDayRegModel.find());
+        if(req.params.year){
+            if(req.params.month){
+                if(req.params.day)
+                    return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));
+                return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
+            } return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year}}));
+        } return res.status(200).json(await IncidenceDayRegModel.find());
     }
 
     public async getIncidencesDayRegByPage(req: Request, res: Response) {
