@@ -31,10 +31,10 @@ class HospitalList extends React.Component {
         };
     }
 
-    nameSex(sex){
-        if(Number(sex)=== 0) return "all";
-        if(Number(sex) === 1) return "men";
-        if(Number(sex) === 2) return "women";
+    nameSex(sex) {
+        if (Number(sex) === 0) return "all";
+        if (Number(sex) === 1) return "men";
+        if (Number(sex) === 2) return "women";
     }
 
     displayElement = (row) => {
@@ -74,7 +74,8 @@ class HospitalList extends React.Component {
                     this.getPage("http://localhost:2023/hospitalDay/1/" + this.state.sexe)
                 }}>Back</Button>}
                 {this.isFirstPage() &&
-                <Button outline color="secondary" onClick={() => this.getPage("http://localhost:2023/hospitalDay/1/" + this.state.sexe)}>Go
+                <Button outline color="secondary"
+                        onClick={() => this.getPage("http://localhost:2023/hospitalDay/1/" + this.state.sexe)}>Go
                     to first page</Button>}
                 {this.isFirstPage() &&
                 <Button outline color="secondary"
@@ -171,34 +172,36 @@ class HospitalList extends React.Component {
         await this.getPage(pathURI)
     }
 
+    getTable() {
+        return <Table striped>
+            <thead>
+            <tr className="fs-sm">
+                <th className="hidden-sm-down">Day</th>
+                <th className="hidden-sm-down">Hospitalisations</th>
+                <th className="hidden-sm-down">Reanimation</th>
+                <th className="hidden-sm-down">Back to home</th>
+                <th className="hidden-sm-down">Department</th>
+                <th className="hidden-sm-down">Deaths</th>
+                <th className="hidden-sm-down">Sex</th>
+            </tr>
+            </thead>
+            <tbody>
+            {this.state.filteredList ? this.state.filteredList.map((row) => (
+                this.displayElement(row)
+            )) : this.state.page.content && this.state.page.content.map((row) => (
+                this.displayElement(row)
+            ))}
+            </tbody>
+        </Table>
+    }
+
 
     render() {
         return (
             <div className={s.root}>
                 {this.displayFilters()}
                 {this.displayChangePage()}
-                {this.state.page &&
-                <Table striped>
-                    <thead>
-                    <tr className="fs-sm">
-                        <th className="hidden-sm-down">Day</th>
-                        <th className="hidden-sm-down">Hospitalisations</th>
-                        <th className="hidden-sm-down">Reanimation</th>
-                        <th className="hidden-sm-down">Back to home</th>
-                        <th className="hidden-sm-down">Department</th>
-                        <th className="hidden-sm-down">Deaths</th>
-                        <th className="hidden-sm-down">Sex</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.filteredList ? this.state.filteredList.map((row) => (
-                        this.displayElement(row)
-                    )) : this.state.page.content && this.state.page.content.map((row) => (
-                        this.displayElement(row)
-                    ))}
-                    </tbody>
-                </Table>
-                }
+                {this.state.page && this.getTable()}
             </div>
         );
     }
