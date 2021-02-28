@@ -8,6 +8,21 @@ export class HospitalDayController {
         return res.status(200).json(await HospitalDayModel.find());
     }
 
+    public async getHospitalDaysByPage(req: Request, res: Response) {
+        const pageNum : string = req.params['page_num'];
+        const pack_size : number = 20;
+        const start : number = pack_size*(Number(pageNum)-1);
+        const resultat : IHospitalDay[] = await HospitalDayModel.find().skip(start).limit(pack_size);
+        const nextPage : string = `http://localhost:2023/hospitalDay/${+pageNum + 1}`;
+        const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/hospitalDay/${+pageNum - 1}` : null;
+        let jsonRes : any = {
+            nextPage: nextPage,
+            prevPage: prevPage,
+            content: resultat
+        };
+        return res.status(200).json(jsonRes);
+    }
+
     public async postHospitalDay(req: Request, res: Response) {
         let user: IHospitalDay = req.body;
         let pattern;

@@ -11,6 +11,11 @@ station_router.get('/', (req: Request, res: Response) => {
     hospitalDayController.getHospitalDays(req, res);
 });
 
+station_router.get('/:page_num', (req: Request, res: Response) => {
+    console.log("GET /hospitalDay/:page_num")
+    hospitalDayController.getHospitalDaysByPage(req, res);
+});
+
 station_router.patch('/:id', (req: Request, res: Response) => {
     console.log("PATCH /hospitalDay/:id")
     hospitalDayController.patchHospitalDay(req, res);

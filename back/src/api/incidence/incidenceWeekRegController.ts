@@ -8,7 +8,7 @@ export class IncidenceWeekRegController {
         return res.status(200).json(await IncidenceWeekRegModel.find());
     }
 
-    public async getIncidencesDayDepByPage(req: Request, res: Response) {
+    public async getIncidenceWeekRegByPage(req: Request, res: Response) {
         const pageNum : string = req.params['page_num'];
         const pack_size : number = 20;
         const start : number = pack_size*(Number(pageNum)-1);

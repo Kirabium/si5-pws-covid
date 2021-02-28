@@ -50,7 +50,7 @@ station_router.get('/france/day', (req: Request, res: Response) => {
 
 station_router.get('/france/day/:page_num', (req: Request, res: Response) => {
     console.log("GET /incidence/france/day/:page_num")
-    incidenceDayDepController.getIncidencesDayDepByPage(req, res);
+    incidenceDayFranceController.getIncidencesDayFranceByPage(req, res);
 });
 
 station_router.patch('/france/day/:id', (req: Request, res: Response) => {
@@ -82,7 +82,7 @@ station_router.get('/reg/day', (req: Request, res: Response) => {
 
 station_router.get('/reg/day/:page_num', (req: Request, res: Response) => {
     console.log("GET /incidence/reg/day/:page_num")
-    incidenceDayDepController.getIncidencesDayDepByPage(req, res);
+    incidenceDayRegController.getIncidencesDayRegByPage(req, res);
 });
 
 station_router.patch('/reg/day/:id', (req: Request, res: Response) => {
@@ -114,7 +114,7 @@ station_router.get('/dep/week', (req: Request, res: Response) => {
 
 station_router.get('/dep/week/:page_num', (req: Request, res: Response) => {
     console.log("GET /incidence/dep/week/:page_num")
-    incidenceDayDepController.getIncidencesDayDepByPage(req, res);
+    incidenceWeekDepController.getIncidencesWeekDepByPage(req, res);
 });
 
 station_router.patch('/dep/week/:id', (req: Request, res: Response) => {
@@ -146,7 +146,7 @@ station_router.get('/france/week', (req: Request, res: Response) => {
 
 station_router.get('/france/week/:page_num', (req: Request, res: Response) => {
     console.log("GET /incidence/france/week/:page_num")
-    incidenceDayDepController.getIncidencesDayDepByPage(req, res);
+    incidenceWeekFranceController.getIncidencesWeekFranceByPage(req, res);
 });
 
 station_router.patch('/france/week/:id', (req: Request, res: Response) => {
@@ -178,7 +178,7 @@ station_router.get('/reg/week', (req: Request, res: Response) => {
 
 station_router.get('/reg/week/:page_num', (req: Request, res: Response) => {
     console.log("GET /incidence/reg/week/:page_num")
-    incidenceDayDepController.getIncidencesDayDepByPage(req, res);
+    incidenceWeekRegController.getIncidenceWeekRegByPage(req, res);
 });
 
 station_router.patch('/reg/week/:id', (req: Request, res: Response) => {
