@@ -34,18 +34,6 @@ function Dashboard(props) {
   //visu map stat donut /visual/:year/:month/:day/:dep/:age
   let pathURIVisual = `http://localhost:2023/visual/2021/02/23/${localisation}/0`;
 
-
-  const getData = () => {
-    return new Promise((resolve) => {
-      axios.get(URL).then((data) => {
-        resolve({
-          death: data.data.FranceGlobalLiveData[0].deces,
-          hospital: data.data.FranceGlobalLiveData[0].hospitalises
-        })
-      })
-    })
-  }
-
   axios.get(pathURIVisual).then(res => {
     let data = res.data
     setCasFranceByDate(data.casFranceByDate[0])
