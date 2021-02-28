@@ -23,6 +23,31 @@
   }
 }
 
+.activeButton {
+  background-color: #FFFFFF;
+  color: #1b1e3c;
+}
+
+.incativeButton {
+  background-color: transparent;
+  color: #ffffff;
+
+}
+
+.buttonRow {
+  margin-bottom: 16px;
+}
+
+.next{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.prev {
+  justify-content: flex-end ;
+}
+
 .table {
   :global(.table.table-sm) {
     td {
