@@ -16,12 +16,7 @@ export class HospitalDayController {
     public async getHospitalDaysByDateAndDep(req: Request, res: Response) {
         return res.status(200).json(await HospitalDayModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, dep: req.params.dep}));
     }
-
-    public async getHospitalDaysFrance(req: Request, res: Response) {
-        
-    }
     
-
     public async getHospitalDaysByPage(req: Request, res: Response) {
         const pageNum : string = req.params['page_num'];
         const pack_size : number = 20;

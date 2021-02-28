@@ -22,4 +22,15 @@ export class VisualisationContoller {
         }   
         return res.status(200).json(jsonRes);  
     }
+    
+    public async getIVisualisationGraphMultiple(req: Request, res: Response) {
+
+        const listCasFrance = await IncidenceDayFranceModel.find({cl_age90: 0});
+        const listHospiFrance = await HospitalDayModel.find();
+        let jsonRes = {
+            listCasFrance :listCasFrance,
+            listHospiFrance: listHospiFrance,
+        }
+        return res.status(200).json(jsonRes);
+    }
 }

@@ -11,6 +11,15 @@ import s from './am4chartMap.module.scss';
 
   
 class Am4chartMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      localisation: this.props.localisation,
+
+      casFranceByDate: this.props.casFranceByDate,
+      listCasDepByDate: this.props.listCasDepByDate,
+    };
+  }
 
     colors = {
       light: {
@@ -95,33 +104,18 @@ class Am4chartMap extends Component {
     labelTemplate.fontWeight = 500
     labelTemplate.fill = am4core.color(this.colors[this.props.mode].text);
 
-    console.log(polygonSeries.data)
-
-    var newData = [{ //id = FR-num dep 
-        id: "FR-01",
-        newName: "bnjokjnokl",
-        nbCas: "666"
-      }, {
-        id: "FR-83",
-        newName: polygonSeries.data[parseInt("nb dep", 10)],
-        nbCas: "156"
-      }, {
-        id: "FR-06",
-        newName: polygonSeries.data[parseInt("nb dep", 10)],
-        nbCas: "1026"
-      }];
-
+    let newData =  this.state.listCasDepByDate;
     // Set up label series to populate
     polygonSeries.events.on("inited", function () {
-      for(let i = 0; i < newData.length; i++){
-        let polygon = polygonSeries.getPolygonById(newData[i].id);
-        if(polygon){
-          let label = labelSeries.mapImages.create();
-          label.latitude = polygon.visualLatitude;
-          label.longitude = polygon.visualLongitude;
-          label.children.getIndex(0).text = newData[i].nbCas;
-        }
-      }
+        newData.map(incident =>{
+          let polygon = polygonSeries.getPolygonById("FR-"+incident.dep);
+          if(polygon){
+            let label = labelSeries.mapImages.create();
+            label.latitude = polygon.visualLatitude;
+            label.longitude = polygon.visualLongitude;
+            label.children.getIndex(0).text = incident.P;
+          }
+        })
     });  
 
     this.map = map;
@@ -141,7 +135,7 @@ class Am4chartMap extends Component {
           <p className="h3 m-0">
             <span className="mr-xs fw-normal">
               <AnimateNumber
-                value={23000}
+                value={this.state.casFranceByDate.P}
                 initialValue={0}
                 duration={1000} 
                 stepPrecision={0}

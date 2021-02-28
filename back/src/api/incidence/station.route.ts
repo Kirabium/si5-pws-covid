@@ -80,10 +80,6 @@ station_router.get('/france/day/:page_num', (req: Request, res: Response) => {
     console.log("GET /incidence/france/day/:page_num")
     incidenceDayFranceController.getIncidencesDayFranceByPage(req, res);
 });
-station_router.get('/france/day/:age', (req: Request, res: Response) => {
-    console.log("GET /incidence/france/day/:age")
-    incidenceDayFranceController.getIncidencesDayFranceByAge(req, res);
-});
 
 station_router.get('/france/day/:year', (req: Request, res: Response) => {
     console.log("GET /incidence/france/day/:year")

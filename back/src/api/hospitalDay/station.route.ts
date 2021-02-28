@@ -10,10 +10,6 @@ station_router.get('/', (req: Request, res: Response) => {
     console.log("GET /hospitalDay")
     hospitalDayController.getHospitalDays(req, res);
 });
-station_router.get('/france', (req: Request, res: Response) => {
-    console.log("GET /hospitalDay/france")
-    hospitalDayController.getHospitalDaysFrance(req, res);
-});
 
 station_router.get('/:page_num', (req: Request, res: Response) => {
     console.log("GET /hospitalDay/:page_num")

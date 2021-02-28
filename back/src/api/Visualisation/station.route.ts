@@ -10,3 +10,8 @@ station_router.get('/:year/:month/:day/:dep/:age', (req: Request, res: Response)
     console.log("GET /visual/:year/:month/:day/:dep/:age")
     visualisationContoller.getIVisualisationMapAndStats(req, res);
 });
+
+station_router.get('/incidenceNhospital', (req: Request, res: Response) => {
+    console.log("GET /visual/incidenceNhospital")
+    visualisationContoller.getIVisualisationGraphMultiple(req, res);
+});

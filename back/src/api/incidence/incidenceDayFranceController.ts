@@ -16,9 +16,6 @@ export class IncidenceDayFranceController {
 
         } return res.status(200).json(await IncidenceDayFranceModel.find());
     }
-    public async getIncidencesDayFranceByAge(req: Request, res: Response) {
-        return res.status(200).json(await IncidenceDayFranceModel.find({cl_age90: Number(req.params.age)}));
-    }
     
 
     public async getIncidencesDayFranceByPage(req: Request, res: Response) {
