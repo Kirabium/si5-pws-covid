@@ -24,7 +24,7 @@ export interface IIncidenceDayReg {
     P: number,
     pop_f: number,
     pop_h: number,
-    cl_age90: string,
+    cl_age90: number,
     pop: number
 }
 
@@ -36,7 +36,7 @@ export interface IIncidenceDayFrance {
     P: number,
     pop_f: number,
     pop_h: number,
-    cl_age90: string,
+    cl_age90: number,
     pop: number
 }
 
@@ -56,7 +56,7 @@ export interface IIncidenceWeekReg {
     P: number,
     pop_f: number,
     pop_h: number,
-    cl_age90: string,
+    cl_age90: number,
     pop: number
 }
 
@@ -68,6 +68,6 @@ export interface IIncidenceWeekFrance {
     P: number,
     pop_f: number,
     pop_h: number,
-    cl_age90: string,
+    cl_age90: number,
     pop: number
 }

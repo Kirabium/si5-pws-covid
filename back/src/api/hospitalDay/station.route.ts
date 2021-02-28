@@ -10,6 +10,10 @@ station_router.get('/', (req: Request, res: Response) => {
     console.log("GET /hospitalDay")
     hospitalDayController.getHospitalDays(req, res);
 });
+station_router.get('/france', (req: Request, res: Response) => {
+    console.log("GET /hospitalDay/france")
+    hospitalDayController.getHospitalDaysFrance(req, res);
+});
 
 station_router.get('/:page_num', (req: Request, res: Response) => {
     console.log("GET /hospitalDay/:page_num")
@@ -34,6 +38,10 @@ station_router.get('/:year/:month', (req: Request, res: Response) => {
 station_router.get('/:year/:month/:day', (req: Request, res: Response) => {
     console.log("GET /hospitalDay/:year/:month/:day")
     hospitalDayController.getHospitalDays(req, res);
+});
+station_router.get('/:year/:month/:day/:dep', (req: Request, res: Response) => {
+    console.log("GET /hospitalDay/:year/:month/:day/:dep")
+    hospitalDayController.getHospitalDaysByDateAndDep(req, res);
 });
 
 station_router.patch('/:id', (req: Request, res: Response) => {

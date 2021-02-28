@@ -8,6 +8,7 @@ import {
     incidenceWeekRegController
 } from './incidence';
 import {mockDBController} from './mockDB';
+import { visualisationContoller } from './Visualisation';
 
 export {
     hospitalDayController,
@@ -17,5 +18,6 @@ export {
     incidenceWeekDepController,
     incidenceDayRegController,
     incidenceDayFranceController,
+    visualisationContoller,
     mockDBController
 };

@@ -7,12 +7,19 @@ export class IncidenceDayFranceController {
     public async getIncidencesDayFrance(req: Request, res: Response) {
         if(req.params.year){
             if(req.params.month){
-                if(req.params.day)
-                    return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));
-                return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
+                if(req.params.day){
+                    if(req.params.age){
+                        return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day},cl_age90: Number(req.params.age)}));     
+                    }return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));     
+                } return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
             } return res.status(200).json(await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year}}));
+
         } return res.status(200).json(await IncidenceDayFranceModel.find());
     }
+    public async getIncidencesDayFranceByAge(req: Request, res: Response) {
+        return res.status(200).json(await IncidenceDayFranceModel.find({cl_age90: Number(req.params.age)}));
+    }
+    
 
     public async getIncidencesDayFranceByPage(req: Request, res: Response) {
         const pageNum : string = req.params['page_num'];
