@@ -11,7 +11,7 @@ station_router.get('/:year/:month/:day/:dep/:age', (req: Request, res: Response)
     visualisationContoller.getIVisualisationMapAndStats(req, res);
 });
 
-station_router.get('/incidenceNhospital', (req: Request, res: Response) => {
-    console.log("GET /visual/incidenceNhospital")
+station_router.get('/incidenceNhospital/:dep', (req: Request, res: Response) => {
+    console.log("GET /visual/incidenceNhospital/:dep")
     visualisationContoller.getIVisualisationGraphMultiple(req, res);
 });

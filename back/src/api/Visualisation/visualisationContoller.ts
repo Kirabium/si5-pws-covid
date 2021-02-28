@@ -25,11 +25,13 @@ export class VisualisationContoller {
     
     public async getIVisualisationGraphMultiple(req: Request, res: Response) {
 
-        const listCasFrance = await IncidenceDayFranceModel.find({cl_age90: 0});
-        const listHospiFrance = await HospitalDayModel.find();
+        const listCasDep = await IncidenceDayDepModel.find({dep: req.params.dep, cl_age90: 0});
+
+        const listHospiDep = await HospitalDayModel.find({dep: req.params.dep, sexe : 0});
+
         let jsonRes = {
-            listCasFrance :listCasFrance,
-            listHospiFrance: listHospiFrance,
+            listCasDep :listCasDep,
+            listHospiDep: listHospiDep,
         }
         return res.status(200).json(jsonRes);
     }

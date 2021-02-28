@@ -14,7 +14,6 @@ class am4chartDonut extends Component {
     };
   }
 
-
   componentDidMount() {
     let chart = am4core.create("chartDonut", am4charts.PieChart);
 

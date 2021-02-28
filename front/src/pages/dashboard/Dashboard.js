@@ -27,8 +27,8 @@ class Dashboard extends React.Component {
       CasDepByDate: null,
       HospitalByDepAndDate : null,
       //graphe muliple
-      listCasFrance: null,
-      listHospiFrance : null,
+      listCasDep: null,
+      listHospiDep : null,
       //donut
       listCasFranceByAge : null,
     };
@@ -47,10 +47,11 @@ class Dashboard extends React.Component {
 
 
     //graphe muliple
-    /*let pathURIGraphListCasFrance = `http://localhost:2023/incidence/france/day/0`;
-    let pathURIGraphListHospiFrance = `http://localhost:2023/hospitalDay/france`;
-    this.state({listCasFrance : await axios.get(pathURIGraphListCasFrance).data});
-    this.state({listHospiFrance : await axios.get(pathURIGraphListHospiFrance).data});*/
+    let pathURIVisualisationGraphMultiple = `http://localhost:2023/visual/incidenceNhospital/${this.state.localisation}`;
+    let resGraph = await axios.get(pathURIVisualisationGraphMultiple)
+    let dataGraph = resGraph.data
+    this.state({listCasDep : dataGraph.listCasDep});
+    this.state({listHospiDep : dataGraph.listHospiDep});
   }
 
 
@@ -163,7 +164,7 @@ class Dashboard extends React.Component {
                 </h6>
               }
             >
-              <MultiCharts />
+              <MultiCharts listCasDep={this.state.listCasDep} listHospiDep={this.state.listHospiDep}/>
             </Widget>
           </Col>
           <Col lg={3} xl={3} xs={12}>
