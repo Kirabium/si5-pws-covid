@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
-import cities from './mock';
-import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
+import am4geodata_franceDepartmentsHigh from "@amcharts/amcharts4-geodata/franceDepartmentsHigh";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faVirus } from '@fortawesome/free-solid-svg-icons'
 
 import AnimateNumber from 'react-animated-number';
 import s from './am4chartMap.module.scss';
 
   
-  class Am4chartMap extends Component {
+class Am4chartMap extends Component {
 
     colors = {
       light: {
@@ -17,14 +18,16 @@ import s from './am4chartMap.module.scss';
         darkFill:"#0dc2ff",
         darkerFill:"#00aae3",
         stroke: "#1a0057",
-        pin: "https://i.ibb.co/10ntngd/darkpin.png"
+        pin: "https://i.ibb.co/10ntngd/darkpin.png",
+        text : "#000"
       },
       dark: {
         lightFill: "#C7D0FF",
         darkFill:"#474D84",
         darkerFill:"#354D84",
         stroke: "#6979C9",
-        pin: "https://i.ibb.co/10ntngd/darkpin.png"
+        pin: "https://i.ibb.co/10ntngd/darkpin.png",
+        text : "#fff"
       },
       plague: {
         lightFill: "#E15550",
@@ -32,18 +35,20 @@ import s from './am4chartMap.module.scss';
         darkerFill:"#94372C",
         stroke: "#F1FDFA",
         pin: "https://i.ibb.co/J7MjDzR/plaguepin.png",
+        text : "#fff"
       }
     }
   
   componentDidMount() {
     let map = am4core.create("map", am4maps.MapChart);
-    map.geodata = am4geodata_usaHigh;
-    map.percentHeight = 90;
-    map.dy = 10;
-    map.projection = new am4maps.projections.AlbersUsa();
+    map.geodata = am4geodata_franceDepartmentsHigh;
+    map.projection = new am4maps.projections.Mercator();
     let polygonSeries = map.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.useGeodata = true;
-    map.homeZoomLevel = 1.2;
+    polygonSeries.calculateVisualCenter = true;
+
+    //zoom controller
+    map.homeZoomLevel = 1;
     map.zoomControl = new am4maps.ZoomControl();
     map.zoomControl.layout = 'horizontal';
     map.zoomControl.align = 'left';
@@ -64,32 +69,61 @@ import s from './am4chartMap.module.scss';
     map.zoomControl.plusButton.scale = .75;
     map.zoomControl.plusButton.label.scale = .75;
     map.zoomControl.plusButton.dx = 5;
+
     let plusButtonHoverState = map.zoomControl.plusButton.background.states.create("hover");
     plusButtonHoverState.properties.fill = am4core.color(this.colors[this.props.mode].darkFill);
+
     let minusButtonHoverState = map.zoomControl.minusButton.background.states.create("hover");
     minusButtonHoverState.properties.fill = am4core.color(this.colors[this.props.mode].darkFill);
+
+
+    // Create map polygon template
     let polygonTemplate = polygonSeries.mapPolygons.template;
     polygonTemplate.tooltipText = "{name}";
     polygonTemplate.fill = am4core.color(this.colors[this.props.mode].darkFill);
     polygonTemplate.stroke = am4core.color(this.colors[this.props.mode].stroke)
+
     let hs = polygonTemplate.states.create("hover");
     hs.properties.fill = am4core.color(this.colors[this.props.mode].darkerFill);
-    let citySeries = map.series.push(new am4maps.MapImageSeries());
-    citySeries.data = cities;
-    citySeries.dataFields.value = "size";
-    let city = citySeries.mapImages.template;
-    city.nonScaling = true;
-    city.propertyFields.latitude = "latitude";
-    city.propertyFields.longitude = "longitude";
-    let circle = city.createChild(am4core.Image);
-    //https://i.ibb.co/J7MjDzR/plaguepin.png
-    circle.href = this.colors[this.props.mode].pin;
-    circle.horizontalCenter = "middle";
-    circle.verticalCenter = "bottom";
-    circle.fill = am4core.color(this.colors[this.props.mode].darkFill);
-    let circleHoverState = circle.states.create("hover");
-    circleHoverState.properties.strokeWidth = 1;
-    circle.tooltipText = '{tooltip}';
+
+    // Configure label series
+    let labelSeries = map.series.push(new am4maps.MapImageSeries());
+    let labelTemplate = labelSeries.mapImages.template.createChild(am4core.Label);
+    labelTemplate.horizontalCenter = "middle";
+    labelTemplate.verticalCenter = "middle";
+    labelTemplate.fontSize = 5;
+    labelTemplate.fontWeight = 500
+    labelTemplate.fill = am4core.color(this.colors[this.props.mode].text);
+
+    console.log(polygonSeries.data)
+
+    var newData = [{ //id = FR-num dep 
+        id: "FR-01",
+        newName: "bnjokjnokl",
+        nbCas: "666"
+      }, {
+        id: "FR-83",
+        newName: polygonSeries.data[parseInt("nb dep", 10)],
+        nbCas: "156"
+      }, {
+        id: "FR-06",
+        newName: polygonSeries.data[parseInt("nb dep", 10)],
+        nbCas: "1026"
+      }];
+
+    // Set up label series to populate
+    polygonSeries.events.on("inited", function () {
+      for(let i = 0; i < newData.length; i++){
+        let polygon = polygonSeries.getPolygonById(newData[i].id);
+        if(polygon){
+          let label = labelSeries.mapImages.create();
+          label.latitude = polygon.visualLatitude;
+          label.longitude = polygon.visualLongitude;
+          label.children.getIndex(0).text = newData[i].nbCas;
+        }
+      }
+    });  
+
     this.map = map;
   }
 
@@ -103,21 +137,22 @@ import s from './am4chartMap.module.scss';
     return (
       <div className={s.mapChart}>
         <div className={s.stats}>
-          <h6 className="mt-1">GEO-LOCATIONS</h6>
+          <h6 className="mt-1">Cas confirmés</h6>
           <p className="h3 m-0">
             <span className="mr-xs fw-normal">
               <AnimateNumber
-                value={1656843}
+                value={23000}
                 initialValue={0}
                 duration={1000} 
                 stepPrecision={0}
                 formatValue={n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
               /></span>
-            <i className="fa fa-map-marker" />
+            <FontAwesomeIcon icon={faVirus} />
+
           </p>
         </div>
         <div className={s.map} id="map">
-          <span>Alternative content for the map</span>
+          <span>Erreur map</span>
         </div>
       </div>
     );
