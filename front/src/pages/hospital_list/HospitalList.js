@@ -20,23 +20,6 @@ import axios from 'axios';
 
 var DatePicker = require("reactstrap-date-picker");
 
-const DropDownButtonDepartment = (props) => {
-    const [dropdownOpen, setOpen] = useState(false);
-
-    const toggle = () => setOpen(!dropdownOpen);
-
-    return (
-        <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle caret>
-                Pick your department
-            </DropdownToggle>
-            <DropdownMenu>
-                {Array.from({length: 99}, (_, i) => i + 1).map((value) => <DropdownItem>{value}</DropdownItem>)}
-            </DropdownMenu>
-        </ButtonDropdown>
-    );
-};
-
 class HospitalList extends React.Component {
     constructor(props) {
         super(props);
@@ -97,24 +80,22 @@ class HospitalList extends React.Component {
         </Row>
     };
 
-    handleChange(value, formattedValue) {
-        this.setState({
-            //value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
-            //formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
-            data: formattedValue,
-            filteredList: [
-                {
-                    "_id": "603b51d6f46e4900affe4736",
-                    "dep": "01",
-                    "sexe": 0,
-                    "jour": "2020-03-18",
-                    "hosp": 2,
-                    "rea": 0,
-                    "rad": 1,
-                    "dc": 0,
-                    "__v": 0
-                }]
-        })
+    async handleChange(value, formattedValue) {
+        if (value) {
+            let dateVal = new Date(value);
+            let day = dateVal.getDate().toString();
+            let month = (dateVal.getMonth() + 1).toString();
+            let year = dateVal.getFullYear().toString();
+
+            let resString = year + "/" + (month.length == 1 ? "0" + month : month) + "/" + (day.length == 1 ? "0" + day : day);
+
+            let result = await axios.get("http://localhost:2023/hospitalDay/" + resString);
+            let page = result.data;
+            this.setState({date: value, filteredList: page});
+        } else {
+            await this.setState({filteredList: null, date: null});
+            this.getPage("http://localhost:2023/hospitalDay/1")
+        }
     }
 
     displayFilters = () => {
