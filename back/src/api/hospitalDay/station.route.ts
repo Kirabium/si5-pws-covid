@@ -35,6 +35,10 @@ station_router.get('/:year/:month/:day', (req: Request, res: Response) => {
     console.log("GET /hospitalDay/:year/:month/:day")
     hospitalDayController.getHospitalDays(req, res);
 });
+station_router.get('/:year/:month/:day/:dep', (req: Request, res: Response) => {
+    console.log("GET /hospitalDay/:year/:month/:day/:dep")
+    hospitalDayController.getHospitalDaysByDateAndDep(req, res);
+});
 
 station_router.patch('/:id', (req: Request, res: Response) => {
     console.log("PATCH /hospitalDay/:id")

@@ -7,9 +7,11 @@ export class IncidenceDayRegController {
     public async getIncidencesDayReg(req: Request, res: Response) {
         if(req.params.year){
             if(req.params.month){
-                if(req.params.day)
-                    return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));
-                return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
+                if(req.params.day){
+                    if(req.params.age){
+                        return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day},cl_age90: Number(req.params.age)}));     
+                    }return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));   
+                }return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
             } return res.status(200).json(await IncidenceDayRegModel.find({jour: {$regex: "^"+req.params.year}}));
         } return res.status(200).json(await IncidenceDayRegModel.find());
     }

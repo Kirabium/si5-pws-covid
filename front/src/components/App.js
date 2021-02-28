@@ -24,11 +24,10 @@ function App(props) {
     const toggle = () => setModal(!modal);
 
     const handleChangeMode = useCallback(
-        (e) => {
-            //setDarkMode(modeValue);
-            setStorageMode(e);
-            document.documentElement.style.setProperty('--current-gradient', `var(--${e}-gradient)`)
-            document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${e})`)
+        (mode) => {
+            setStorageMode(mode);
+            document.documentElement.style.setProperty('--current-gradient', `var(--${mode}-gradient)`)
+            document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${mode})`)
         },
         [setStorageMode],
     );
@@ -64,7 +63,7 @@ function App(props) {
 
         document.documentElement.style.setProperty('--current-gradient', `var(--${storageMode}-gradient)`)
         document.documentElement.style.setProperty('--bg-current',`var(--bg-custom-${storageMode})`)
-        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+        if(storageMode!='dark' && window.matchMedia('(prefers-color-scheme: dark)').matches){
             toggle()
         }
     },[])

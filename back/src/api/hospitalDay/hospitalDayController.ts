@@ -13,15 +13,17 @@ export class HospitalDayController {
             } return res.status(200).json(await HospitalDayModel.find({jour: {$regex: "^"+req.params.year}}));
         } return res.status(200).json(await HospitalDayModel.find());
     }
-
+    public async getHospitalDaysByDateAndDep(req: Request, res: Response) {
+        return res.status(200).json(await HospitalDayModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, dep: req.params.dep}));
+    }
+    
     public async getHospitalDaysByPage(req: Request, res: Response) {
         const pageNum : string = req.params['page_num'];
-        const sexe : number = req.params['sexe'] ? Number(req.params['sexe']) : 0;
         const pack_size : number = 20;
         const start : number = pack_size*(Number(pageNum)-1);
-        const resultat : IHospitalDay[] = await HospitalDayModel.find({sexe:sexe}).skip(start).limit(pack_size);
-        const nextPage : string = `http://localhost:2023/hospitalDay/${+pageNum + 1}/${sexe}`;
-        const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/hospitalDay/${+pageNum - 1}/${sexe}` : null;
+        const resultat : IHospitalDay[] = await HospitalDayModel.find().skip(start).limit(pack_size);
+        const nextPage : string = `http://localhost:2023/hospitalDay/${+pageNum + 1}`;
+        const prevPage : any = (+pageNum !== 1)? `http://localhost:2023/hospitalDay/${+pageNum - 1}` : null;
         let jsonRes : any = {
             nextPage: nextPage,
             prevPage: prevPage,

@@ -38,7 +38,7 @@ export const IncidenceWeekRegSchema = new Schema(
             required: true
         },
         cl_age90: {
-            type: String,
+            type: Number,
             required: true
         },
         pop: {

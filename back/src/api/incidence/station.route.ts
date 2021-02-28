@@ -36,6 +36,19 @@ station_router.get('/dep/day/:year/:month/:day', (req: Request, res: Response) =
     incidenceDayDepController.getIncidencesDayDep(req, res);
 });
 
+station_router.get('/dep/day/:year/:month/:day/:age', (req: Request, res: Response) => {
+    console.log("GET /incidence/dep/day/:year/:month/:day/:age")
+    incidenceDayDepController.getIncidencesDayDep(req, res);
+});
+station_router.get('/dep/day/:year/:month/:day/:dep', (req: Request, res: Response) => {
+    console.log("GET /incidence/dep/day/:year/:month/:day/:dep")
+    incidenceDayDepController.getIncidencesDayDepByDepAndDate(req, res);
+});
+station_router.get('/dep/day/:year/:month/:day/:dep/:age', (req: Request, res: Response) => {
+    console.log("GET /incidence/dep/day/:year/:month/:day/:dep/:age")
+    incidenceDayDepController.getIncidencesDayDepByDepAndDateAndAge(req, res);
+});
+
 station_router.patch('/dep/day/:id', (req: Request, res: Response) => {
     console.log("PATCH /incidence/dep/day/:id")
     incidenceDayDepController.patchIncidenceDayDep(req, res);
@@ -83,6 +96,11 @@ station_router.get('/france/day/:year/:month/:day', (req: Request, res: Response
     incidenceDayFranceController.getIncidencesDayFrance(req, res);
 });
 
+station_router.get('/france/day/:year/:month/:day/:age', (req: Request, res: Response) => {
+    console.log("GET /incidence/france/day/:year/:month/:day/:age")
+    incidenceDayFranceController.getIncidencesDayFrance(req, res);
+});
+
 station_router.patch('/france/day/:id', (req: Request, res: Response) => {
     console.log("PATCH /incidence/france/day/:id")
     incidenceDayFranceController.patchIncidenceDayFrance(req, res);
@@ -127,6 +145,11 @@ station_router.get('/reg/day/:year/:month', (req: Request, res: Response) => {
 
 station_router.get('/reg/day/:year/:month/:day', (req: Request, res: Response) => {
     console.log("GET /incidence/reg/day/:year/:month/:day")
+    incidenceDayRegController.getIncidencesDayReg(req, res);
+});
+
+station_router.get('/reg/day/:year/:month/:day/:age', (req: Request, res: Response) => {
+    console.log("GET /incidence/reg/day/:year/:month/:day/:age")
     incidenceDayRegController.getIncidencesDayReg(req, res);
 });
 
