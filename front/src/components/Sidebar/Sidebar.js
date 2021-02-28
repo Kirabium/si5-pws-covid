@@ -21,10 +21,6 @@ class Sidebar extends React.Component {
         sidebarStatic: false,
     };
 
-    constructor(props) {
-        super(props);
-
-    }
 
     componentDidMount() {
         this.element.addEventListener('transitionend', () => {

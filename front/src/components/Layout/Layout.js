@@ -23,12 +23,6 @@ class Layout extends React.Component {
     sidebarStatic: false,
     sidebarOpened: false,
   };
-  constructor(props) {
-    super(props);
-
-  }
-
-
 
   render() {
     return (
