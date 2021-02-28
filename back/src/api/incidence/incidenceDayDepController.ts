@@ -7,13 +7,10 @@ export class IncidenceDayDepController {
     public async getIncidencesDayDep(req: Request, res: Response) {
         if(req.params.year){
             if(req.params.month){
-                if(req.params.day){
-                    const regExp = new RegExp("^"+req.params.year+"-"+req.params.month+"-"+req.params.day)
-                    return res.status(200).json(await IncidenceDayDepModel.find({jour: regExp}));
-                } const regExp = new RegExp("^"+req.params.year+"-"+req.params.month)
-                return res.status(200).json(await IncidenceDayDepModel.find({jour: regExp}));
-            } const regExp = new RegExp("^"+req.params.year) 
-            return res.status(200).json(await IncidenceDayDepModel.find({jour: regExp}));
+                if(req.params.day)
+                    return res.status(200).json(await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}}));
+                return res.status(200).json(await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month}}));
+            } return res.status(200).json(await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year}}));
         } return res.status(200).json(await IncidenceDayDepModel.find());
     }
 
