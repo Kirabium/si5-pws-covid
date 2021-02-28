@@ -16,6 +16,11 @@ station_router.get('/dep/day', (req: Request, res: Response) => {
     incidenceDayDepController.getIncidencesDayDep(req, res);
 });
 
+station_router.get('/dep/day/:page_num', (req: Request, res: Response) => {
+    console.log("GET /incidence/dep/day/:page_num")
+    incidenceDayDepController.getIncidencesDayDepByPage(req, res);
+});
+
 station_router.patch('/dep/day/:id', (req: Request, res: Response) => {
     console.log("PATCH /incidence/dep/day/:id")
     incidenceDayDepController.patchIncidenceDayDep(req, res);
@@ -41,6 +46,11 @@ station_router.delete('/dep/day', (req: Request, res: Response) => {
 station_router.get('/france/day', (req: Request, res: Response) => {
     console.log("GET /incidence/france/day")
     incidenceDayFranceController.getIncidencesDayFrance(req, res);
+});
+
+station_router.get('/france/day/:page_num', (req: Request, res: Response) => {
+    console.log("GET /incidence/france/day/:page_num")
+    incidenceDayFranceController.getIncidencesDayFranceByPage(req, res);
 });
 
 station_router.patch('/france/day/:id', (req: Request, res: Response) => {
@@ -70,6 +80,11 @@ station_router.get('/reg/day', (req: Request, res: Response) => {
     incidenceDayRegController.getIncidencesDayReg(req, res);
 });
 
+station_router.get('/reg/day/:page_num', (req: Request, res: Response) => {
+    console.log("GET /incidence/reg/day/:page_num")
+    incidenceDayRegController.getIncidencesDayRegByPage(req, res);
+});
+
 station_router.patch('/reg/day/:id', (req: Request, res: Response) => {
     console.log("PATCH /incidence/reg/day/:id")
     incidenceDayRegController.patchIncidenceDayReg(req, res);
@@ -95,6 +110,11 @@ station_router.delete('/reg/day', (req: Request, res: Response) => {
 station_router.get('/dep/week', (req: Request, res: Response) => {
     console.log("GET /incidence/dep/week")
     incidenceWeekDepController.getIncidencesWeekDep(req, res);
+});
+
+station_router.get('/dep/week/:page_num', (req: Request, res: Response) => {
+    console.log("GET /incidence/dep/week/:page_num")
+    incidenceWeekDepController.getIncidencesWeekDepByPage(req, res);
 });
 
 station_router.patch('/dep/week/:id', (req: Request, res: Response) => {
@@ -124,6 +144,11 @@ station_router.get('/france/week', (req: Request, res: Response) => {
     incidenceWeekFranceController.getIncidencesWeekFrance(req, res);
 });
 
+station_router.get('/france/week/:page_num', (req: Request, res: Response) => {
+    console.log("GET /incidence/france/week/:page_num")
+    incidenceWeekFranceController.getIncidencesWeekFranceByPage(req, res);
+});
+
 station_router.patch('/france/week/:id', (req: Request, res: Response) => {
     console.log("PATCH /incidence/france/week/:id")
     incidenceWeekFranceController.patchIncidenceWeekFrance(req, res);
@@ -149,6 +174,11 @@ station_router.delete('/france/week', (req: Request, res: Response) => {
 station_router.get('/reg/week', (req: Request, res: Response) => {
     console.log("GET /incidence/reg/week")
     incidenceWeekRegController.getIncidencesWeekReg(req, res);
+});
+
+station_router.get('/reg/week/:page_num', (req: Request, res: Response) => {
+    console.log("GET /incidence/reg/week/:page_num")
+    incidenceWeekRegController.getIncidenceWeekRegByPage(req, res);
 });
 
 station_router.patch('/reg/week/:id', (req: Request, res: Response) => {

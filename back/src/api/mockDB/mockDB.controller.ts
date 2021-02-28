@@ -38,6 +38,22 @@ export class MockDBController {
         res.status(200).json("All collections cleared");
     }
 
+
+    public async initDBHp(req: Request, res: Response) {
+        await HospitalDayModel.deleteMany({});
+        try {
+
+            let hospitalDayResult = await axios.get(hospitalDayURI);
+            let hospitalDay = hospitalDayResult.data;
+            await HospitalDayModel.insertMany(hospitalDay);
+
+        } catch (e) {
+            console.log(e)
+        }
+
+        res.status(200).json("Collections initialized");
+    }
+
     public async initDB(req: Request, res: Response) {
         await this.cleanAll();
         try {
@@ -68,7 +84,7 @@ export class MockDBController {
 
             let hospitalDayResult = await axios.get(hospitalDayURI);
             let hospitalDay = hospitalDayResult.data;
-            await IncidenceWeekRegModel.insertMany(hospitalDay);
+            await HospitalDayModel.insertMany(hospitalDay);
 
         } catch (e) {
             console.log(e)
