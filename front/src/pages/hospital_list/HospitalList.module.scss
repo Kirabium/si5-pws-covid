@@ -23,6 +23,16 @@
   }
 }
 
+.next{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.prev {
+  justify-content: flex-end ;
+}
+
 .table {
   :global(.table.table-sm) {
     td {

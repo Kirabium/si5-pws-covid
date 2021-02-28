@@ -9,6 +9,10 @@ mockDB_router.post('/init', (req: Request, res: Response) => {
     console.log("POST /db/init")
     mockDBController.initDB(req, res);
 });
+mockDB_router.post('/init/hp', (req: Request, res: Response) => {
+    console.log("POST /db/init/hp")
+    mockDBController.initDBHp(req, res);
+});
 
 mockDB_router.delete('/flush', (req: Request, res: Response) => {
     console.log("DELETE /db/flush")
