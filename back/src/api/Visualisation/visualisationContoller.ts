@@ -8,7 +8,7 @@ export class VisualisationContoller {
         const casFranceByDate = await IncidenceDayFranceModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day},cl_age90: Number(req.params.age)});
         const listCasDepByDate= await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, cl_age90 : Number(req.params.age)});   
         // stat dep
-        const  CasDepByDate= await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, dep: req.params.dep_number, cl_age90 :Number(req.params.age)});
+        const  CasDepByDate= await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, dep: req.params.dep, cl_age90 :Number(req.params.age)});
         const  HospitalByDepAndDate = await HospitalDayModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}, dep: req.params.dep});
         //donut
         const listCasFranceByAge= await IncidenceDayDepModel.find({jour: {$regex: "^"+req.params.year+"-"+req.params.month+"-"+req.params.day}});
