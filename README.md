@@ -14,7 +14,7 @@ docker-compose up
 
 The server and mongo database are now running on localhost
 
-```Note: the mongoDB image won't run on windows (exit 14), you should execute docker in an Unix or Mac environment```
+__Note: the mongoDB image won't run on windows (exit 14), you should execute docker in an Unix or Mac environment__
 
 Because of the memory constrainst, the database is not populated by default, you should run the following queries (using [PostMan](https://www.postman.com/downloads/) or any other API testing tool):
 ```
@@ -45,7 +45,7 @@ npm install
 npm start
 ```
 
-Note : For some reasons, the CORS can block the queries of the front to the back-end, if so, you will not have any data and the console will give you an error related to CORS. To solve this issue you can install the following extensions on your Browser : 
+__Note: For some reasons, the CORS can block the queries of the front to the back-end, if so, you will not have any data and the console will give you an error related to CORS. To solve this issue you can install the following extensions on your Browser:__
 
 > [Chrome](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf)
 > 
@@ -56,6 +56,6 @@ Note : For some reasons, the CORS can block the queries of the front to the back
 and add localhost in the whitelist then toggle on the extension.
 
 ## Architecture
-![Sans titre](https://user-images.githubusercontent.com/32424601/109426505-4e6ee580-79ee-11eb-8eb7-88df8420d8bc.png)
+![Architecture Diagram](https://user-images.githubusercontent.com/32424601/109426505-4e6ee580-79ee-11eb-8eb7-88df8420d8bc.png)
 
-We got the React app as front-end (client-side), a NodeJS application using express and a MongoDB both running in containers in Docker environment
+The porject consists of a React app as the front-end (client-side) and both a NodeJS application using express and a MongoDB both running in a Docker container environment
