@@ -13,12 +13,13 @@ docker-compose up
 ```
 
 The server and mongo database are now running on localhost
-note : the mongoDB image won't run on windows (exit 14), you should execute docker in an Unix or Mac environment
+```Note: the mongoDB image won't run on windows (exit 14), you should execute docker in an Unix or Mac environment```
 
-Because of the memory constrainst, the database is not populated by default, you should run the following queries (in PostMan or other) :
-POST : http://localhost:2023/db/init
-POST : http://localhost:2023/db/init/hp
-
+Because of the memory constrainst, the database is not populated by default, you should run the following queries (in [PostMan](https://www.postman.com/downloads/) or other):
+```
+POST http://localhost:2023/db/init
+POST http://localhost:2023/db/init/hp
+```
 with an empty body
 
 The backend is now ready to work.
