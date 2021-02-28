@@ -64,7 +64,6 @@ class IncidenceList extends React.Component {
             {this.state.france && <td> {row.pop_h}</td>}
             {this.state.france && <td> {row.cl_age90}</td>}
             {this.state.france && <td> {row.pop}</td>}
-            {this.state.france && <td> {row.fra}</td>}
         </tr>
     };
 
@@ -208,26 +207,25 @@ class IncidenceList extends React.Component {
 
             {this.state.dep && <th className="hidden-sm-down">Number of cases</th>}
             {this.state.dep && <th className="hidden-sm-down">Age range</th>}
-            {this.state.dep && <th className="hidden-sm-down">Number of people in the age range</th>}
+            {this.state.dep && <th className="hidden-sm-down">People in the age range</th>}
             {this.state.dep && <th className="hidden-sm-down">Department</th>}
 
-            {this.state.reg && <th className="hidden-sm-down">Number of women cases</th>}
-            {this.state.reg && <th className="hidden-sm-down">Number of men cases</th>}
+            {this.state.reg && <th className="hidden-sm-down">Women cases</th>}
+            {this.state.reg && <th className="hidden-sm-down">Men cases</th>}
             {this.state.reg && <th className="hidden-sm-down">Number of cases</th>}
-            {this.state.reg && <th className="hidden-sm-down">Number of women in the age range</th>}
-            {this.state.reg && <th className="hidden-sm-down">Number of men in the age range</th>}
+            {this.state.reg && <th className="hidden-sm-down">Women in the age range</th>}
+            {this.state.reg && <th className="hidden-sm-down">Men in the age range</th>}
             {this.state.reg && <th className="hidden-sm-down">Age range</th>}
-            {this.state.reg && <th className="hidden-sm-down">Number of people in the age range</th>}
+            {this.state.reg && <th className="hidden-sm-down">People in the age range</th>}
             {this.state.reg && <th className="hidden-sm-down">Region</th>}
 
             {this.state.france && <th className="hidden-sm-down">Number of women cases</th>}
             {this.state.france && <th className="hidden-sm-down">Number of men cases</th>}
             {this.state.france && <th className="hidden-sm-down">Number of cases</th>}
-            {this.state.france && <th className="hidden-sm-down">Number of women in the age range</th>}
-            {this.state.france && <th className="hidden-sm-down">Number of men in the age range</th>}
+            {this.state.france && <th className="hidden-sm-down">Women in the age range</th>}
+            {this.state.france && <th className="hidden-sm-down">Men in the age range</th>}
             {this.state.france && <th className="hidden-sm-down">Age range</th>}
-            {this.state.france && <th className="hidden-sm-down">Number of people in the age range</th>}
-            {this.state.france && <th className="hidden-sm-down">France</th>}
+            {this.state.france && <th className="hidden-sm-down">People in the age range</th>}
 
         </tr>
         </thead>
