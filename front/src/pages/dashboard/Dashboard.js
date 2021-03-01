@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col, Progress } from "reactstrap";
 
 import Widget from "../../components/Widget";
@@ -31,17 +31,20 @@ function Dashboard(props) {
   const [listCasFranceByAge, setListCasFranceByAge] = useState(null)
 
 
+  
   //visu map stat donut /visual/:year/:month/:day/:dep/:age
   let pathURIVisual = `http://localhost:2023/visual/2021/02/23/${localisation}/0`;
 
-  axios.get(pathURIVisual).then(res => {
-    let data = res.data
-    setCasFranceByDate(data.casFranceByDate[0])
-    setListCasDepByDate(data.listCasDepByDate[0])
-    setCasDepByDate(data.CasDepByDate[0])
-    setHospitalByDepAndDate(data.HospitalByDepAndDate[0])
-    setListCasFranceByAge(data.listCasFranceByAge)
-  })
+  useEffect(()=>{
+    axios.get(pathURIVisual).then(res => {
+      let data = res.data
+      setCasFranceByDate(data.casFranceByDate[0])
+      setListCasDepByDate(data.listCasDepByDate[0])
+      setCasDepByDate(data.CasDepByDate[0])
+      setHospitalByDepAndDate(data.HospitalByDepAndDate[0])
+      setListCasFranceByAge(data.listCasFranceByAge)
+    })
+  });
 
   return (
     <div className={s.root}>
